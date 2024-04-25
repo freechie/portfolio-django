@@ -1,0 +1,31 @@
+{% extends 'django_portion/base.html' %}
+
+{% block content %}
+<div class="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 mt-20 mb-20">
+  <div class="max-w-md w-full">
+    <div class="text-center">
+      <div class="avatar">
+        <div class="w-56 rounded-full ring ring-primary ring-offset-base-100">
+          <img class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56 object-cover" src="{{ MEDIA_URL }}/img/copy.png" alt="me">
+        </div>
+      </div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">About Me</h2>
+    </div>
+    <div class="mt-8 text-gray-500 text-lg dark:text-platinum-500">
+      <p>Experienced Software Engineer specialized in AI/ML, adept at data analysis and visualization with Python
+      libraries and full-stack web development in Django. Skilled in writing scalable code in Python, C/C++, and
+      Java. Led data management and analytics projects at Columbia University, leveraging Oracle databases to drive
+      a 20% annual increase in fundraising success.</p>
+      <p class="mt-4">I'm passionate about using technology to solve real-world problems and always looking for new challenges.</p>
+      <div class="mt-6">
+        <a href="{% url 'contact' %}" class="text-xl font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">
+          Contact me &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+<a href="{% url 'contact' %}"><img src="/media/projects/1.png" alt="John R. Molina"></a>

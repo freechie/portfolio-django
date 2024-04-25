@@ -1,0 +1,54 @@
+{% extends 'django_portion/base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 md:flex md:flex-row md:space-x-8 lg:space-x-0">
+  <!-- Main content section for posts and projects -->
+  <div class="flex-grow pr-8 mb-8 md:mb-0">
+    <!-- Content display logic here -->
+    {% if display_items.posts %}
+    <h2 class="text-4xl font-bold text-gray-800 dark:text-white mb-6">Posts</h2>
+    <div class="space-y-4">
+      {% for post in display_items.posts %}
+      <!-- Individual post container -->
+      <div class="border-b pb-4 mb-4 border-gray-200 dark:border-gray-700">
+        <h2 class="text-2xl font-semibold text-blue-500 hover:text-blue-600 dark:hover:text-blue-400">
+          <a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a>
+        </h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Posted on {{ post.created_on|date:"F d, Y" }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <br>
+    <!-- Display Projects -->
+    {% if display_items.projects %}
+    <h2 class="text-4xl font-bold text-gray-800 dark:text-white mb-6">Projects</h2>
+      {% for project in display_items.projects %}
+      <div class="border-b pb-4 mb-4 border-gray-200 dark:border-gray-700">
+        <h2 class="text-2xl font-semibold text-blue-500 hover:text-blue-600 dark:hover:text-blue-400">
+          <a href="{% url 'project_detail' project.pk %}">{{ project.title }}</a>
+        </h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Project last updated: {{ project.updated_at|date:"F d, Y" }}</p>
+      </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <!-- Tags container as a separate, thinner box on the right -->
+  <div class="w-auto lg:w-1/6 mt-8 md:mt-8 lg:mt-">
+    <h2 class="text-center text-2xl font-semibold text-gray-800 dark:text-white mb-4">Tags</h2>
+    <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow">
+      <ul class="list-none text-center space-y-2">
+        {% for tag in tags_with_counts %}
+        <li>
+          <a class="text-lg text-celestialblue-500 hover:text-celestialblue-700" href="{% url 'blog_by_tag' tag.name %}">
+            {{ tag.name }} ({{ tag.count }})
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

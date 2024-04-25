@@ -1,0 +1,29 @@
+{% extends 'django_portion/base.html' %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8 md:flex">
+  <div class="post-content flex-grow pr-8">
+    <h2 class="text-4xl font-bold text-gray-800 dark:text-white mb-6">{{ project.title }}</h2>
+    <p>Last updated: {{ project.updated_at|date:"Y-m-d" }}</p>
+    <div class="space-y-4">
+      {% for image in project.images.all %}
+        <div>
+          <img src="{{ image.image.url }}" alt="{{ image.caption|default:project.title }}">
+        </div>
+      {% empty %}
+        <p>No images available for this project.</p>
+      {% endfor %}
+      <p>{{ project.description }}</p>
+      <br>
+      <div>
+        {% if project.link %}
+          <a href="{{ project.link }}" class="dark:text-white text-xlhover:text-blue-400" target="_blank">View Project</a>
+        {% endif %}
+        {% if project.repo_link %}
+          <a href="{{ project.repo_link }}" class="dark:text-white text-xl hover:text-blue-400" target="_blank">View Repository</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

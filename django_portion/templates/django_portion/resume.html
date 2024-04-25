@@ -1,0 +1,32 @@
+{% extends 'django_portion/base.html' %}
+
+{% block content %}
+
+<div class="container mx-auto px-4 py-8 md:flex mt-5 mb-10">
+  <div class="text-center post-content flex-grow pr-8 pt-5">
+    <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-6">Please take a look at my resume:</h1>
+    <div class="space-y-4">
+      <br>
+      <h2><a href="{{ resume.upload.url }}" target="_blank"
+          class="text-5xl pb-4 mb-4 text-celestialblue-500 hover:text-celestialblue-700">My Resume</a></h2>
+    </div>
+  </div>
+  <!-- Tags container as a separate, thinner box on the right -->
+  <div class="w-auto lg:w-1/6 mt-8 md:mt-8 lg:mt-">
+    <h2 class="text-center text-2xl font-semibold text-gray-800 dark:text-white mb-4">Tags</h2>
+    <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow">
+      <ul class="list-none text-center space-y-2">
+        {% for tag in tags_with_counts %}
+        <li>
+          <a class="text-lg text-celestialblue-500 hover:text-celestialblue-700"
+            href="{% url 'blog_by_tag' tag.name %}">
+            {{ tag.name }} ({{ tag.count }})
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
