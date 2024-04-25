@@ -24,7 +24,7 @@ urlpatterns = [
     path("tag/<str:tag_name>/", views.blog_by_tag, name='blog_by_tag'),
     path('project/<int:pk>/', views.project_detail, name='project_detail'),
     path("__reload__/", include("django_browser_reload.urls")),
-
+    path("__debug__/", include("debug_toolbar.urls")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

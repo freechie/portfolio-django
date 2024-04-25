@@ -27,15 +27,18 @@
     {% if messages %}
     <div role="alert" class="alert alert-success">
       {% for message in messages %}
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-      <p {% if message.tags %} class="{{ message.tags }} " {% endif %}>{{ message }}</p>
-        {% endfor %}
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+      {% endfor %}
     </div>
     <br>
     {% endif %}
     <!-- Comments Section -->
     <div class="comments-section mb-8">
-      
+
       <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Comments</h2>
       {% for comment in comments %}
       <div class="comment mb-4">
@@ -71,7 +74,8 @@
       <ul class="list-none text-center space-y-2">
         {% for tag in tags_with_counts %}
         <li>
-          <a class="text-lg text-celestialblue-500 hover:text-celestialblue-700" href="{% url 'blog_by_tag' tag.name %}">
+          <a class="text-lg text-celestialblue-500 hover:text-celestialblue-700"
+            href="{% url 'blog_by_tag' tag.name %}">
             {{ tag.name }} ({{ tag.num_posts }})
           </a>
         </li>
@@ -80,4 +84,4 @@
     </div>
   </div>
 
-{% endblock %}
+  {% endblock %}
