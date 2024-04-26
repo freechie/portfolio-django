@@ -1,18 +1,21 @@
 #menu {
-    transition: opacity 500ms ease-out, height 500ms ease-out;
-  }
-  
-  #menu-toggle-container {
-    opacity: 0; /* Start hidden */
-    transition: opacity 500ms ease-out;
-  }
-  
-  /* Ensure menu is initially hidden on smaller screens */
-  @media (max-width: 1023px) {
-    #menu {
-      opacity: 0;
-      height: 0;
-      overflow: hidden;
-    }
-  }
-  
+	transition: opacity 500ms ease-out, height 500ms ease-out;
+}
+
+#menu-toggle-container {
+	opacity: 0; /* Start hidden */
+	transition: opacity 500ms ease-out;
+}
+
+/* Ensure menu is initially hidden on smaller screens */
+@media (max-width: 1023px) {
+	#menu {
+		opacity: 0;
+		height: 0;
+		overflow: hidden;
+	}
+}
+
+#hoverimg:hover {
+	transition: opacity 500ms ease-out, height 500ms ease-out;
+}
