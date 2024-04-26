@@ -1,18 +1,18 @@
 {% extends 'django_portion/base.html' %}
 
 {% block content %}
-<div class="container mx-auto px-4 py-8 flex flex-col md:flex-row min-h-screen mt-10 mb-10">
+<div class="container mx-auto px-4 py-8 flex flex-col md:flex-row min-h-screen">
 
   <!-- Main Content and Comments Section with flex-grow to take available space -->
   <div class="flex-grow md:w-2/3 lg:w-3/4 pr-8">
 
     <!-- Blog Post Content -->
-    <div class="post-content mb-8">
+    <div class="mb-8">
       <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-6">{{ post.title }}</h1>
       <p class="text-lg text-gray-700 dark:text-white mb-4">{{ post.body }}</p>
 
       <!-- Display Tags associated with the post -->
-      <div class="post-tags mb-8">
+      <div class="mb-8">
         <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Tags:</h2>
         <div class="flex flex-wrap">
           {% for tag in post.tags.all %}
@@ -36,9 +36,9 @@
     </div>
     <br>
     {% endif %}
-    <!-- Comments Section -->
-    <div class="comments-section mb-8">
 
+    <!-- Comments Section -->
+    <div class="mb-8">
       <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Comments</h2>
       {% for comment in comments %}
       <div class="comment mb-4">
@@ -49,26 +49,29 @@
       <p>No comments yet.</p>
       {% endfor %}
     </div>
-
     <!-- Comment Form -->
-    <div class="comment-form mb-8">
-      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Leave your name and a comment</h2>
-
-      <form method="post" class="space-y-7">
+    <div class="mb-8">
+      <p class="text-lg text-gray-800 dark:text-white">Please leave your name and a comment below:</p>
+      <form method="post" action="{% url 'blog_detail' pk=post.pk %}"
+        class="max-w-lg dark:bg-opacity-15 dark:bg-gradient-to-r dark:from-blue-950 dark:to-cyan-950 rounded-lg border p-2 mx-auto mt-5">
         {% csrf_token %}
-        {{ comment_form.as_p }}
-        <button type="submit"
-          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-          Submit
-        </button>
+        <div class="px-3 mb-2 mt-2">
+          <textarea name="name" placeholder="Enter your name here..."
+            class="w-full h-10 dark:bg-slate-950 bg-gray-100 rounded border border-gray-400 leading-normal resize-none py-2 px-3 font-medium placeholder-gray-700"></textarea>
+          <textarea name="body" placeholder="Enter your comment here..."
+            class="w-full dark:bg-slate-950 bg-gray-100 rounded border border-gray-400 leading-normal resize-none h-20 py-2 px-3 font-medium placeholder-gray-700"></textarea>
+        </div>
+        <div class="flex justify-end px-4">
+          <input type="submit"
+            class="px-2.5 py-1.5 rounded-md text-white text-sm bg-gradient-to-tr from-blue-800 to-violet-800"
+            value="Post Comment">
+        </div>
       </form>
     </div>
-
-
   </div>
 
   <!-- Tags container as a separate, thinner box on the right -->
-  <div class="max-w-fit lg:w-1/6 mt-8 md:mt-8">
+  <div class="flex-grow max-w-fit lg:w-1/6 mt-8 md:mt-8">
     <h2 class="text-center text-2xl font-semibold text-gray-800 dark:text-white mb-4">Tags</h2>
     <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow">
       <ul class="list-none text-center space-y-2">

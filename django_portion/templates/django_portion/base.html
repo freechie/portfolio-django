@@ -1,5 +1,4 @@
 {% load static tailwind_tags %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +19,7 @@
   <div class="flex-grow">
     <header>
       <nav
-        class="sticky top-0 z-10 flex items-center justify-between flex-wrap bg-gradient-to-tr from-celestialblue-700 to-indigo-400 border-slate-950 dark:bg-gradient-to-tr dark:from-celestialblue-100 dark:to-indigo-950 border-b-2 dark:border-slate-950 text-cyan-50">
+        class="sticky top-0 z-10 flex items-center justify-between flex-wrap bg-gradient-to-tr from-celestialblue-700 to-indigo-400 border-slate-950 dark:bg-gradient-to-tr dark:from-celestialblue-200 dark:to-indigo-950 border-b-2 dark:border-slate-950 text-cyan-50">
         <div class="max-w-5xl mx-auto px-4 flex-shrink-0 mr-4">
           <div class="flex items-center justify-between h-16">
             <a href="{% url 'blog_index' %}" class="font-bold text-5xl tracking-tight" alt="blog">🌌</a>
@@ -35,10 +34,10 @@
             </svg>
           </button>
         </div>
-        <div class="w-full block flex-grow lg:flex lg:w-auto text-center md: text-center sm:text-right" id="menu">
-          <div class="flex-1 text-lg pr-5 space-x-3 lg:flex-grow">
+        <div class="w-full block flex-grow lg:flex lg:w-auto md: text-center sm:text-right" id="menu">
+          <div class="flex-1 text-lg space-x-3 p-4 py-4 lg:flex-grow">
             <a href="/"
-              class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700">Portfolio</a>
+              class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700 pl-3">Portfolio</a>
             <a href="{% url 'blog_index' %}"
               class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700 ">Blog</a>
             <a href="{% url 'about_me' %}"
@@ -76,6 +75,8 @@
     </div>
   </footer>
   <script defer src="{% static '/django_portion/base.js' %}"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
 </body>
 
 </html>

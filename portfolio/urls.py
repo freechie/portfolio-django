@@ -13,7 +13,7 @@ router.register(r'projects', ProjectViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", views.index, name="index"),
+    path("", include("frontend.urls")),
     path("blog/", views.blog_index, name="blog_index"),
     path("blog/<int:pk>/", views.blog_detail, name="blog_detail"),
     path("about/", views.about_me, name="about_me"),
@@ -29,4 +29,5 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

@@ -28,6 +28,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "frontend",
+    "webpack_loader",
     "django_portion.apps.DjangoPortionConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -170,9 +172,16 @@ INTERNAL_IPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:3000",
+    "http://127.0.0.1:8000",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:3000",
 ]
+
+WEBPACK_LOADER = {
+    "DEFAULT": {
+        "BUNDLE_DIR_NAME": "frontend/",
+        "STATS_FILE": os.path.join(BASE_DIR, "frontend/static/frontend/webpack-stats.json")
+    }
+}
