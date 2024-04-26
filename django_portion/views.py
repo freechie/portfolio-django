@@ -94,7 +94,7 @@ def blog_index(request):
 # View for individual Blog post detail page
 
 
-@ratelimit(key='ip', rate='5/m', method='POST', block=True)
+# @ ratelimit(key='ip', rate='5/m', method='POST', block=True)
 def blog_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     comments = post.comments.filter(approved=True)

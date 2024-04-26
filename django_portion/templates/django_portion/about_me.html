@@ -1,11 +1,11 @@
 {% extends 'django_portion/base.html' %}
 
 {% block content %}
-<div class="min-h-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 mt-20">
+<div class="min-h-full flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8 my-16">
   <div class="max-w-md w-full">
     <div class="text-center">
       <div class="avatar">
-        <div id='hoverimg' class="w-56 rounded-full ring ring-4 ring-primary hover:ring-sky-600 ring-offset-300">
+        <div id='hoverimg' class="w-60 rounded-full ring ring-7 hover:ring-sky-600">
           <a href="{% url 'contact' %}"><img
               class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56 object-cover hover:blur-sm"
               src="{{ MEDIA_URL }}/img/copy.png" alt="me"></a>
