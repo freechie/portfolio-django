@@ -8,7 +8,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, "frontend/static/frontend/"),
-		filename: "[name]-[hash].js",
+		filename: "[name]-[fullhash].js",
 		publicPath: "/static/frontend/",
 	},
 	plugins: [

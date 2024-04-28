@@ -1,208 +1,61 @@
 {
   "status": "done",
   "assets": {
-    "frontend-0862b7c43e8467a89e34.js": {
-      "name": "frontend-0862b7c43e8467a89e34.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-0862b7c43e8467a89e34.js",
-      "publicPath": "/static/frontend/frontend-0862b7c43e8467a89e34.js"
+    "2630a3e3eab21c607e21.svg": {
+      "name": "2630a3e3eab21c607e21.svg",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/2630a3e3eab21c607e21.svg",
+      "publicPath": "/static/frontend/2630a3e3eab21c607e21.svg",
+      "sourceFilename": "node_modules/slick-carousel/slick/fonts/slick.svg"
     },
-    "frontend-0db0c5873a159feb22b6.js": {
-      "name": "frontend-0db0c5873a159feb22b6.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-0db0c5873a159feb22b6.js",
-      "publicPath": "/static/frontend/frontend-0db0c5873a159feb22b6.js"
+    "295183786cd8a1389865.woff": {
+      "name": "295183786cd8a1389865.woff",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/295183786cd8a1389865.woff",
+      "publicPath": "/static/frontend/295183786cd8a1389865.woff",
+      "sourceFilename": "node_modules/slick-carousel/slick/fonts/slick.woff"
     },
-    "frontend-0e8f6124ba80cc01b863.js": {
-      "name": "frontend-0e8f6124ba80cc01b863.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-0e8f6124ba80cc01b863.js",
-      "publicPath": "/static/frontend/frontend-0e8f6124ba80cc01b863.js"
+    "589-3fff48a81a0cc2261f86.js": {
+      "name": "589-3fff48a81a0cc2261f86.js",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/589-3fff48a81a0cc2261f86.js",
+      "publicPath": "/static/frontend/589-3fff48a81a0cc2261f86.js"
     },
-    "frontend-19579ae972668250dcb1.js": {
-      "name": "frontend-19579ae972668250dcb1.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-19579ae972668250dcb1.js",
-      "publicPath": "/static/frontend/frontend-19579ae972668250dcb1.js"
+    "589-3fff48a81a0cc2261f86.js.LICENSE.txt": {
+      "name": "589-3fff48a81a0cc2261f86.js.LICENSE.txt",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/589-3fff48a81a0cc2261f86.js.LICENSE.txt",
+      "publicPath": "/static/frontend/589-3fff48a81a0cc2261f86.js.LICENSE.txt"
     },
-    "frontend-1bb9fed47ba2cf0e1b41.js": {
-      "name": "frontend-1bb9fed47ba2cf0e1b41.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-1bb9fed47ba2cf0e1b41.js",
-      "publicPath": "/static/frontend/frontend-1bb9fed47ba2cf0e1b41.js"
+    "a4e97f5a2a64f0ab1323.eot": {
+      "name": "a4e97f5a2a64f0ab1323.eot",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/a4e97f5a2a64f0ab1323.eot",
+      "publicPath": "/static/frontend/a4e97f5a2a64f0ab1323.eot",
+      "sourceFilename": "node_modules/slick-carousel/slick/fonts/slick.eot"
     },
-    "frontend-1e78aa06dcfe998c1c1d.js": {
-      "name": "frontend-1e78aa06dcfe998c1c1d.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-1e78aa06dcfe998c1c1d.js",
-      "publicPath": "/static/frontend/frontend-1e78aa06dcfe998c1c1d.js"
+    "c94f7671dcc99dce43e2.ttf": {
+      "name": "c94f7671dcc99dce43e2.ttf",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/c94f7671dcc99dce43e2.ttf",
+      "publicPath": "/static/frontend/c94f7671dcc99dce43e2.ttf",
+      "sourceFilename": "node_modules/slick-carousel/slick/fonts/slick.ttf"
     },
-    "frontend-1f31734c6cb8113a7872.js": {
-      "name": "frontend-1f31734c6cb8113a7872.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-1f31734c6cb8113a7872.js",
-      "publicPath": "/static/frontend/frontend-1f31734c6cb8113a7872.js"
+    "fb6f3c230cb846e25247.gif": {
+      "name": "fb6f3c230cb846e25247.gif",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/fb6f3c230cb846e25247.gif",
+      "publicPath": "/static/frontend/fb6f3c230cb846e25247.gif",
+      "sourceFilename": "node_modules/slick-carousel/slick/ajax-loader.gif"
     },
-    "frontend-2f1ca3ff721f6cc1d9c2.js": {
-      "name": "frontend-2f1ca3ff721f6cc1d9c2.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-2f1ca3ff721f6cc1d9c2.js",
-      "publicPath": "/static/frontend/frontend-2f1ca3ff721f6cc1d9c2.js"
+    "frontend-3fff48a81a0cc2261f86.js": {
+      "name": "frontend-3fff48a81a0cc2261f86.js",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-3fff48a81a0cc2261f86.js",
+      "publicPath": "/static/frontend/frontend-3fff48a81a0cc2261f86.js"
     },
-    "frontend-313873be0fd22807589d.js": {
-      "name": "frontend-313873be0fd22807589d.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-313873be0fd22807589d.js",
-      "publicPath": "/static/frontend/frontend-313873be0fd22807589d.js"
-    },
-    "frontend-323c0dc0e3e3550470f6.js": {
-      "name": "frontend-323c0dc0e3e3550470f6.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-323c0dc0e3e3550470f6.js",
-      "publicPath": "/static/frontend/frontend-323c0dc0e3e3550470f6.js"
-    },
-    "frontend-4f6a47c162e6dd7ab2e7.js": {
-      "name": "frontend-4f6a47c162e6dd7ab2e7.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-4f6a47c162e6dd7ab2e7.js",
-      "publicPath": "/static/frontend/frontend-4f6a47c162e6dd7ab2e7.js"
-    },
-    "frontend-528af4310d7f88fc0d09.js": {
-      "name": "frontend-528af4310d7f88fc0d09.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-528af4310d7f88fc0d09.js",
-      "publicPath": "/static/frontend/frontend-528af4310d7f88fc0d09.js"
-    },
-    "frontend-5b3ebf3231c6577bbccb.js": {
-      "name": "frontend-5b3ebf3231c6577bbccb.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-5b3ebf3231c6577bbccb.js",
-      "publicPath": "/static/frontend/frontend-5b3ebf3231c6577bbccb.js"
-    },
-    "frontend-61e49be79b489b2443c6.js": {
-      "name": "frontend-61e49be79b489b2443c6.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-61e49be79b489b2443c6.js",
-      "publicPath": "/static/frontend/frontend-61e49be79b489b2443c6.js"
-    },
-    "frontend-639dab12ef3718ad0ed6.js": {
-      "name": "frontend-639dab12ef3718ad0ed6.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-639dab12ef3718ad0ed6.js",
-      "publicPath": "/static/frontend/frontend-639dab12ef3718ad0ed6.js"
-    },
-    "frontend-654821abe08939ee8cd6.js": {
-      "name": "frontend-654821abe08939ee8cd6.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-654821abe08939ee8cd6.js",
-      "publicPath": "/static/frontend/frontend-654821abe08939ee8cd6.js"
-    },
-    "frontend-6f17a7424067b2d844eb.js": {
-      "name": "frontend-6f17a7424067b2d844eb.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-6f17a7424067b2d844eb.js",
-      "publicPath": "/static/frontend/frontend-6f17a7424067b2d844eb.js"
-    },
-    "frontend-73f0a1158a201ead90aa.js": {
-      "name": "frontend-73f0a1158a201ead90aa.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-73f0a1158a201ead90aa.js",
-      "publicPath": "/static/frontend/frontend-73f0a1158a201ead90aa.js"
-    },
-    "frontend-79395087c1fb35a7f57a.js": {
-      "name": "frontend-79395087c1fb35a7f57a.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-79395087c1fb35a7f57a.js",
-      "publicPath": "/static/frontend/frontend-79395087c1fb35a7f57a.js"
-    },
-    "frontend-8e20f5044460dd6c50bb.js": {
-      "name": "frontend-8e20f5044460dd6c50bb.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-8e20f5044460dd6c50bb.js",
-      "publicPath": "/static/frontend/frontend-8e20f5044460dd6c50bb.js"
-    },
-    "frontend-8fecc551afba24631f5a.js": {
-      "name": "frontend-8fecc551afba24631f5a.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-8fecc551afba24631f5a.js",
-      "publicPath": "/static/frontend/frontend-8fecc551afba24631f5a.js"
-    },
-    "frontend-9422a1339eba0ed29412.js": {
-      "name": "frontend-9422a1339eba0ed29412.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-9422a1339eba0ed29412.js",
-      "publicPath": "/static/frontend/frontend-9422a1339eba0ed29412.js"
-    },
-    "frontend-94b51f53f42c0e48c916.js": {
-      "name": "frontend-94b51f53f42c0e48c916.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-94b51f53f42c0e48c916.js",
-      "publicPath": "/static/frontend/frontend-94b51f53f42c0e48c916.js"
-    },
-    "frontend-9cb8f119511702dd706a.js": {
-      "name": "frontend-9cb8f119511702dd706a.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-9cb8f119511702dd706a.js",
-      "publicPath": "/static/frontend/frontend-9cb8f119511702dd706a.js"
-    },
-    "frontend-b110f8bfe0e9a0dd120d.js": {
-      "name": "frontend-b110f8bfe0e9a0dd120d.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-b110f8bfe0e9a0dd120d.js",
-      "publicPath": "/static/frontend/frontend-b110f8bfe0e9a0dd120d.js"
-    },
-    "frontend-b37e9fc3ebd3a923ff08.js": {
-      "name": "frontend-b37e9fc3ebd3a923ff08.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-b37e9fc3ebd3a923ff08.js",
-      "publicPath": "/static/frontend/frontend-b37e9fc3ebd3a923ff08.js"
-    },
-    "frontend-b4f899ff0c8a3bea5a97.js": {
-      "name": "frontend-b4f899ff0c8a3bea5a97.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-b4f899ff0c8a3bea5a97.js",
-      "publicPath": "/static/frontend/frontend-b4f899ff0c8a3bea5a97.js"
-    },
-    "frontend-c03bccd18a5e269f466b.js": {
-      "name": "frontend-c03bccd18a5e269f466b.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-c03bccd18a5e269f466b.js",
-      "publicPath": "/static/frontend/frontend-c03bccd18a5e269f466b.js"
-    },
-    "frontend-c9dbac33cd6fe639c09b.js": {
-      "name": "frontend-c9dbac33cd6fe639c09b.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-c9dbac33cd6fe639c09b.js",
-      "publicPath": "/static/frontend/frontend-c9dbac33cd6fe639c09b.js"
-    },
-    "frontend-cd11aac8934c91576d2c.js": {
-      "name": "frontend-cd11aac8934c91576d2c.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-cd11aac8934c91576d2c.js",
-      "publicPath": "/static/frontend/frontend-cd11aac8934c91576d2c.js"
-    },
-    "frontend-cf72b34442ccb03625d3.js": {
-      "name": "frontend-cf72b34442ccb03625d3.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-cf72b34442ccb03625d3.js",
-      "publicPath": "/static/frontend/frontend-cf72b34442ccb03625d3.js"
-    },
-    "frontend-d0b415bd0818aafc2689.js": {
-      "name": "frontend-d0b415bd0818aafc2689.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-d0b415bd0818aafc2689.js",
-      "publicPath": "/static/frontend/frontend-d0b415bd0818aafc2689.js"
-    },
-    "frontend-d63947130faa7e19018b.js": {
-      "name": "frontend-d63947130faa7e19018b.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-d63947130faa7e19018b.js",
-      "publicPath": "/static/frontend/frontend-d63947130faa7e19018b.js"
-    },
-    "frontend-d87617681887f3b9710a.js": {
-      "name": "frontend-d87617681887f3b9710a.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-d87617681887f3b9710a.js",
-      "publicPath": "/static/frontend/frontend-d87617681887f3b9710a.js"
-    },
-    "frontend-e528239ad101ca203409.js": {
-      "name": "frontend-e528239ad101ca203409.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-e528239ad101ca203409.js",
-      "publicPath": "/static/frontend/frontend-e528239ad101ca203409.js"
-    },
-    "frontend-e83233e5064fad0e5827.js": {
-      "name": "frontend-e83233e5064fad0e5827.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-e83233e5064fad0e5827.js",
-      "publicPath": "/static/frontend/frontend-e83233e5064fad0e5827.js"
-    },
-    "frontend-e9919d7b70d12b84ab5e.js": {
-      "name": "frontend-e9919d7b70d12b84ab5e.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-e9919d7b70d12b84ab5e.js",
-      "publicPath": "/static/frontend/frontend-e9919d7b70d12b84ab5e.js"
-    },
-    "frontend-ec034672d4680976485b.js": {
-      "name": "frontend-ec034672d4680976485b.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-ec034672d4680976485b.js",
-      "publicPath": "/static/frontend/frontend-ec034672d4680976485b.js"
-    },
-    "frontend-ef22589a2837ecc24878.js": {
-      "name": "frontend-ef22589a2837ecc24878.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-ef22589a2837ecc24878.js",
-      "publicPath": "/static/frontend/frontend-ef22589a2837ecc24878.js"
+    "frontend-3fff48a81a0cc2261f86.js.LICENSE.txt": {
+      "name": "frontend-3fff48a81a0cc2261f86.js.LICENSE.txt",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-3fff48a81a0cc2261f86.js.LICENSE.txt",
+      "publicPath": "/static/frontend/frontend-3fff48a81a0cc2261f86.js.LICENSE.txt"
     }
   },
   "chunks": {
     "frontend": [
-      "frontend-ec034672d4680976485b.js"
+      "frontend-3fff48a81a0cc2261f86.js"
     ]
   },
-  "publicPath": "/static/frontend/",
-  "error": "ModuleNotFoundError",
-  "message": "Module not found: Error: Can't resolve './components/ProjectScroller' in '/Users/what/Sites/portfolio/frontend/src'"
+  "publicPath": "/static/frontend/"
 }
