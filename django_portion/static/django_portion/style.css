@@ -16,7 +16,3 @@
 		text-align: center;
 	}
 }
-
-#hoverimg:hover {
-	transition: opacity 500ms ease-out, height 500ms ease-out;
-}

@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Definition of the Project class to encapsulate project data
 class Project {
 	constructor({
 		id,
@@ -38,6 +37,7 @@ class Project {
 
 export default function ProjectScroller() {
 	const [projects, setProjects] = useState(new Map());
+	const [theme, setTheme] = useState("light"); // Simulated theme state
 
 	useEffect(() => {
 		fetch("http://localhost:8000/api/projects/")
@@ -53,15 +53,21 @@ export default function ProjectScroller() {
 			.catch((error) => console.error("Error fetching projects:", error));
 	}, []);
 
-	// Custom arrow components for the slider
 	function CustomNextArrow(props) {
 		const { className, style, onClick } = props;
 		return (
 			<div
 				className={className}
-				style={{ ...style, display: "block", right: "5px" }}
+				style={{
+					...style,
+					display: "block",
+					right: "1px",
+					background: theme === "dark" ? "#333" : "#18181B",
+					color: theme === "dark" ? "white" : "gray",
+					borderRadius: "30%",
+				}}
 				onClick={onClick}
-			/>
+			></div>
 		);
 	}
 
@@ -70,9 +76,16 @@ export default function ProjectScroller() {
 		return (
 			<div
 				className={className}
-				style={{ ...style, display: "block", left: "5px" }}
+				style={{
+					...style,
+					display: "block",
+					left: "25px",
+					background: theme === "dark" ? "#333" : "#18181B",
+					color: theme === "dark" ? "white" : "gray",
+					borderRadius: "30%",
+				}}
 				onClick={onClick}
-			/>
+			></div>
 		);
 	}
 
@@ -84,7 +97,7 @@ export default function ProjectScroller() {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		autoplay: true,
-		autoplaySpeed: 2500,
+		autoplaySpeed: 2000,
 		accessibility: true,
 		arrows: true,
 		pauseOnHover: true,
@@ -98,22 +111,18 @@ export default function ProjectScroller() {
 	};
 
 	return (
-		<div className="slider-container text-center px-4">
+		<div className="slider-container text-center px-4 py-2">
 			<Slider {...settings}>
 				{Array.from(projects.values()).map((project) => (
 					<div
 						key={project.id}
-						className="p-6 border rounded-lg shadow m-6 dark: bg-gradient-to-t  from-slate-900 to-slate-950 text-slate-800 dark:text-white space-y-4"
+						className="p-8 rounded-lg shadow-lg mx-4 my-6 bg-gradient-to-t from-transparent to-neutral-100 dark:bg-gradient-to-b dark:from-transparent dark:to-inherit text-slate-700 dark:text-neutral-50 backdrop-filter backdrop-blur-lg"
 					>
-						<h3 className="text-2xl font-bold">{project.title}</h3>
+						<h3 className="text-4xl mb-10 font-semibold font-montserrat">
+							{project.title}
+						</h3>
 						<img
-							className="
-								rounded-t-lg
-								w-full
-								object-cover
-								max-h-96
-								md:max-h-96
-							"
+							className="rounded-lg w-full object-cover max-h-96 md:max-h-96 mb-8"
 							src={
 								project.images.length > 0
 									? project.images[0].image
@@ -121,16 +130,19 @@ export default function ProjectScroller() {
 							}
 							alt={project.title || "Project image"}
 						/>
-						<p>{project.description}</p>
-						<strong>Role: {project.contributionRole}</strong>
-						<div className="flex overflow-x-auto pb-2 space-x-2">
+						<p className="mb-3 text-xl font-sans">{project.description}</p>
+						<p className="mb-6 block text-lg font-semibold">
+							Role: {project.contributionRole}
+						</p>
+						<div className="flex justify-center flex-wrap gap-3 my-3 overflow-x-auto">
 							{project.tags.map((tag) => (
-								<span
+								<a
 									key={tag}
-									className="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded whitespace-nowrap"
+									href={`/tag/${tag}/`}
+									className=" bg-gradient-to-r from-indigo-600 to-indigo-900 text-neutral-200 text-md font-semibold px-3 py-1.5 rounded-full"
 								>
 									{tag}
-								</span>
+								</a>
 							))}
 						</div>
 						{project.repoLink && (
@@ -138,7 +150,7 @@ export default function ProjectScroller() {
 								href={project.repoLink}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="inline-flex items-center px-3 py-2 bg-blue-700 rounded-lg text-white hover:bg-blue-800"
+								className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-celestialblue-400 to-celestialblue-600 rounded-lg text-neutral-200 mt-4"
 							>
 								View on GitHub
 							</a>

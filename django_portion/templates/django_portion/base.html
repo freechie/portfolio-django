@@ -12,6 +12,12 @@
 
   <link rel="shortcut icon" href="{% static '/django_portion/favicon.ico' %}">
   <link rel="stylesheet" href="{% static 'django_portion/style.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+
 </head>
 
 <body
@@ -19,7 +25,7 @@
   <div class="flex-grow">
     <header>
       <nav
-        class="sticky top-0 z-10 flex items-center justify-between flex-wrap bg-gradient-to-r from-celestialblue-800 to-indigo-600 border-slate-950 dark:bg-gradient-to-tr dark:from-celestialblue-200 dark:to-indigo-950 border-b-2 dark:border-slate-950 text-cyan-50">
+        class="sticky top-0 z-10 flex items-center justify-between border-b-2 flex-wrap bg-gradient-to-r from-celestialblue-800 to-indigo-600 border-slate-950 dark:border-slate-700 dark:bg-gradient-to-tr dark:from-celestialblue-200 dark:to-indigo-950 text-cyan-50">
         <div class="max-w-5xl mx-auto px-4 flex-shrink-0 mr-4">
           <div class="flex items-center justify-between h-16">
             <a href="{% url 'blog_index' %}" class="font-bold text-5xl tracking-tight" alt="blog">🌌</a>
@@ -61,11 +67,11 @@
     </main>
   </div>
   <footer
-    class="text-platinum-500 bg-gradient-to-bl from-indigo-400 to-celestialblue-700 border-slate-950 dark:bg-gradient-to-bl dark:from-celestialblue-100 dark:to-indigo-950 border-t-2 dark:border-slate-950 dark:text-cyan-50 w-full ">
+    class="text-platinum-500 bg-gradient-to-bl from-indigo-400 to-celestialblue-700 border-slate-950 dark:bg-gradient-to-bl dark:from-celestialblue-100 dark:to-indigo-950 border-t-2 dark:border-slate-900 dark:text-cyan-50 w-full text-lg">
     <div class="max-w-6xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
       <div class="text-center">
-        <p class="text-sm md:text-base">© 2024 John R. Molina. All rights reserved.</p>
-        <p class="text-sm md:text-base">Made with React, Django, TailwindCSS, and a whole lot of ❤️‍🔥</p>
+        <p>© 2024 John R. Molina. All rights reserved.</p>
+        <p>Made with React, Django, Tailwind, and a whole lot of ❤️‍🔥</p>
         <div class="space-x-4 md:justify-start md:space-x-6 mt-4 ">
           <a href="https://twitter.com/rich_txt_editor" target="_blank" class="hover:text-celestialblue-700">Twitter</a>
           <a href="https://github.com/rich_txt_editor" target="_blank" class="hover:text-celestialblue-700">GitHub</a>

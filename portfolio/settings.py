@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "django_browser_reload",
     "debug_toolbar",
     "corsheaders",
-
+    "captcha",
 ]
 
 MIDDLEWARE = [
@@ -58,6 +58,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "csp.middleware.CSPMiddleware",
 
 ]
 
@@ -185,3 +186,5 @@ WEBPACK_LOADER = {
         "STATS_FILE": os.path.join(BASE_DIR, "frontend/static/frontend/webpack-stats.json")
     }
 }
+
+CAPTCHA_IMAGE_SIZE = (100, 60)  # Width x Height in pixels

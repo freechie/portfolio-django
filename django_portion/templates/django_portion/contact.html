@@ -1,24 +1,27 @@
 {% extends 'django_portion/base.html' %}
 
 {% block content %}
-
-<div class="container m-auto p-4 md:flex">
+<div class="container mx-auto p-8 flex flex-col md:flex-row">
+  <!-- Content Area -->
   <div class="flex-grow">
-    <h1 class="text-5xl font-bold text-gray-800 dark:text-white mb-6">Contact Me</h1>
-    <div class="space-y-8">
-      <h3>If you have any questions or would like to work on something together, feel free to contact me through the
-        following channels:</h3>
-      <div class="text-3xl">
-        <ul>
-          <li class="pb-4"><a href="mailto:johndevio@protonmail.com"
-              class="text-celestialblue-500 hover:text-celestialblue-700">E-mail</a></li>
-          <li class="pb-4"><a href="https://www.linkedin.com/in/jrmolin90/" target="_blank"
-              class="text-celestialblue-500 hover:text-celestialblue-700">LinkedIn</a></li>
-          <li class="pb-3"><a href="https://github.com/jrmol" target="_blank"
-              class="text-celestialblue-500 hover:text-celestialblue-700">GitHub</a></li>
-        </ul>
-
-      </div>
+    <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-6 font-montserrat">Contact Me</h1>
+    <p class="text-lg dark:text-neutral-200 text-gray-800 mb-4">
+      If you have any questions or would like to work on something together, feel free to contact me through the
+      following channels:
+    </p>
+    <!-- Contact Options -->
+    <div class="space-y-4 text-3xl">
+      <a href="mailto:johndevio@protonmail.com" class="block text-celestialblue-500 hover:text-celestialblue-700">
+        E-mail
+      </a>
+      <a href="https://www.linkedin.com/in/jrmolin90/" target="_blank"
+        class="block text-celestialblue-500 hover:text-celestialblue-700">
+        LinkedIn
+      </a>
+      <a href="https://github.com/rich-txt-editor" target="_blank"
+        class="block text-celestialblue-500 hover:text-celestialblue-700">
+        GitHub
+      </a>
     </div>
   </div>
 </div>

@@ -347,14 +347,30 @@ module.exports = {
 		},
 		fontFamily: {
 			sans: [
+				"Open Sans",
 				"ui-sans-serif",
 				"system-ui",
+				"-apple-system",
+				"BlinkMacSystemFont",
+				"Segoe UI",
+				"Roboto",
+				"Helvetica Neue",
+				"Arial",
 				"sans-serif",
-				'"Apple Color Emoji"',
-				'"Segoe UI Emoji"',
-				'"Segoe UI Symbol"',
-				'"Noto Color Emoji"',
 			],
+			montserrat: [
+				"Montserrat",
+				"ui-sans-serif",
+				"system-ui",
+				"-apple-system",
+				"BlinkMacSystemFont",
+				"Segoe UI",
+				"Roboto",
+				"Helvetica Neue",
+				"Arial",
+				"sans-serif",
+			],
+
 			serif: [
 				"ui-serif",
 				"Georgia",
@@ -1113,6 +1129,14 @@ module.exports = {
 		},
 		extend: {
 			colors: {
+				transparent: "transparent",
+				current: "currentColor",
+				tyrianpurple: {
+					DEFAULT: "#45062E",
+				},
+				rustyred: {
+					DEFAULT: "#d52941",
+				},
 				pastelgreen: {
 					DEFAULT: "#21c55d",
 					100: "#072713",
@@ -1187,7 +1211,5 @@ module.exports = {
 		require("@tailwindcss/aspect-ratio"),
 		require("daisyui"),
 	],
-	daisyui: {
-		themes: ["business"],
-	},
+	daisyui: {},
 };
