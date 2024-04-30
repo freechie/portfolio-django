@@ -13,16 +13,6 @@
       "publicPath": "/static/frontend/295183786cd8a1389865.woff",
       "sourceFilename": "node_modules/slick-carousel/slick/fonts/slick.woff"
     },
-    "589-3fff48a81a0cc2261f86.js": {
-      "name": "589-3fff48a81a0cc2261f86.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/589-3fff48a81a0cc2261f86.js",
-      "publicPath": "/static/frontend/589-3fff48a81a0cc2261f86.js"
-    },
-    "589-3fff48a81a0cc2261f86.js.LICENSE.txt": {
-      "name": "589-3fff48a81a0cc2261f86.js.LICENSE.txt",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/589-3fff48a81a0cc2261f86.js.LICENSE.txt",
-      "publicPath": "/static/frontend/589-3fff48a81a0cc2261f86.js.LICENSE.txt"
-    },
     "a4e97f5a2a64f0ab1323.eot": {
       "name": "a4e97f5a2a64f0ab1323.eot",
       "path": "/Users/what/Sites/portfolio/frontend/static/frontend/a4e97f5a2a64f0ab1323.eot",
@@ -41,20 +31,20 @@
       "publicPath": "/static/frontend/fb6f3c230cb846e25247.gif",
       "sourceFilename": "node_modules/slick-carousel/slick/ajax-loader.gif"
     },
-    "frontend-3fff48a81a0cc2261f86.js": {
-      "name": "frontend-3fff48a81a0cc2261f86.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-3fff48a81a0cc2261f86.js",
-      "publicPath": "/static/frontend/frontend-3fff48a81a0cc2261f86.js"
+    "frontend-7de2c6c1aa22e1a0f77c.js": {
+      "name": "frontend-7de2c6c1aa22e1a0f77c.js",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-7de2c6c1aa22e1a0f77c.js",
+      "publicPath": "/static/frontend/frontend-7de2c6c1aa22e1a0f77c.js"
     },
-    "frontend-3fff48a81a0cc2261f86.js.LICENSE.txt": {
-      "name": "frontend-3fff48a81a0cc2261f86.js.LICENSE.txt",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-3fff48a81a0cc2261f86.js.LICENSE.txt",
-      "publicPath": "/static/frontend/frontend-3fff48a81a0cc2261f86.js.LICENSE.txt"
+    "frontend-7de2c6c1aa22e1a0f77c.js.LICENSE.txt": {
+      "name": "frontend-7de2c6c1aa22e1a0f77c.js.LICENSE.txt",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-7de2c6c1aa22e1a0f77c.js.LICENSE.txt",
+      "publicPath": "/static/frontend/frontend-7de2c6c1aa22e1a0f77c.js.LICENSE.txt"
     }
   },
   "chunks": {
     "frontend": [
-      "frontend-3fff48a81a0cc2261f86.js"
+      "frontend-7de2c6c1aa22e1a0f77c.js"
     ]
   },
   "publicPath": "/static/frontend/"

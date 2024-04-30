@@ -1,122 +1,151 @@
-import React, { useState, useEffect, Suspense } from "react";
-import axios from "axios";
-import { capitalize } from "../utils/utils";
+import React, { useState, useEffect } from "react";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Lazy import for Slider
-const Slider = React.lazy(() => import("react-slick"));
+// Definition of the Project class to encapsulate project data
+class Project {
+	constructor({
+		id,
+		title,
+		description,
+		contribution_role,
+		created_at,
+		updated_at,
+		status,
+		technologies,
+		tags,
+		images,
+		repo_link,
+		is_featured,
+		link,
+	}) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.contributionRole = contribution_role;
+		this.createdAt = created_at;
+		this.updatedAt = updated_at;
+		this.status = status;
+		this.technologies = technologies;
+		this.tags = tags;
+		this.images = images;
+		this.repoLink = repo_link;
+		this.isFeatured = is_featured;
+		this.link = link;
+	}
+}
 
-const Responsive = () => {
-	const [projects, setProjects] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
+export default function ProjectScroller() {
+	const [projects, setProjects] = useState(new Map());
 
 	useEffect(() => {
-		const fetchProjects = async () => {
-			setIsLoading(true);
-			try {
-				const response = await axios.get("http://localhost:8000/api/projects/");
-				setProjects(response.data);
-			} catch (error) {
-				console.error("There was an error fetching the projects:", error);
-			} finally {
-				setIsLoading(false);
-			}
-		};
-
-		fetchProjects();
+		fetch("http://localhost:8000/api/projects/")
+			.then((response) => response.json())
+			.then((data) => {
+				const newProjects = new Map();
+				data.forEach((projectData) => {
+					const project = new Project(projectData);
+					newProjects.set(project.id, project);
+				});
+				setProjects(newProjects);
+			})
+			.catch((error) => console.error("Error fetching projects:", error));
 	}, []);
 
+	// Custom arrow components for the slider
+	function CustomNextArrow(props) {
+		const { className, style, onClick } = props;
+		return (
+			<div
+				className={className}
+				style={{ ...style, display: "block", right: "5px" }}
+				onClick={onClick}
+			/>
+		);
+	}
+
+	function CustomPrevArrow(props) {
+		const { className, style, onClick } = props;
+		return (
+			<div
+				className={className}
+				style={{ ...style, display: "block", left: "5px" }}
+				onClick={onClick}
+			/>
+		);
+	}
+
 	var settings = {
-		dots: true,
-		infinite: true,
-		speed: 500,
-		slidesToShow: 1, // Set to 1 for better readability
-		slidesToScroll: 1,
 		initialSlide: 0,
-		responsive: [
-			{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					infinite: true,
-					dots: true,
-				},
-			},
-			{
-				breakpoint: 600,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					initialSlide: 2,
-				},
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-				},
-			},
-		],
+		dots: false,
+		lazyLoad: true,
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 2500,
+		accessibility: true,
+		arrows: true,
+		pauseOnHover: true,
+		speed: 1000,
+		fade: true,
+		centerMode: true,
+		centerPadding: "60px",
+		adaptiveHeight: true,
+		nextArrow: <CustomNextArrow />,
+		prevArrow: <CustomPrevArrow />,
 	};
 
 	return (
-		<div className="slider-container container mx-auto p-10">
-			{isLoading ? (
-				<p>Loading...</p>
-			) : (
-				<Suspense fallback={<div>Loading Slider...</div>}>
-					<Slider {...settings}>
-						{projects.map((project) => (
-							<div key={project.id} className="text-center p-10">
-								<h3>{capitalize(project.title)}</h3>
-								<p>{project.description}</p>
-								<div>
-									<strong>Role:</strong>{" "}
-									{project.contribution_role || "Not specified"}
-								</div>
-								<div>
-									<strong>Technologies:</strong>{" "}
-									{project.technologies || "Not specified"}
-								</div>
-								<div>
-									<strong>Tags:</strong> {project.tags.join(", ")}
-								</div>
-								{project.images && project.images.length > 0 && (
-									<img
-										src={project.images[0].image}
-										alt={project.images[0].caption || "Project thumbnail"}
-										className="w-full object-scale-down"
-										style={{ height: "600px" }}
-									/>
-								)}
-								{project.repo_link && (
-									<a
-										href={project.repo_link}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										View on GitHub
-									</a>
-								)}
-								{project.link && (
-									<a
-										href={project.link}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										View Project
-									</a>
-								)}
-							</div>
-						))}
-					</Slider>
-				</Suspense>
-			)}
+		<div className="slider-container text-center px-4">
+			<Slider {...settings}>
+				{Array.from(projects.values()).map((project) => (
+					<div
+						key={project.id}
+						className="p-6 border rounded-lg shadow m-6 dark: bg-gradient-to-t  from-slate-900 to-slate-950 text-slate-800 dark:text-white space-y-4"
+					>
+						<h3 className="text-2xl font-bold">{project.title}</h3>
+						<img
+							className="
+								rounded-t-lg
+								w-full
+								object-cover
+								max-h-96
+								md:max-h-96
+							"
+							src={
+								project.images.length > 0
+									? project.images[0].image
+									: "placeholder-image-url"
+							}
+							alt={project.title || "Project image"}
+						/>
+						<p>{project.description}</p>
+						<strong>Role: {project.contributionRole}</strong>
+						<div className="flex overflow-x-auto pb-2 space-x-2">
+							{project.tags.map((tag) => (
+								<span
+									key={tag}
+									className="bg-blue-200 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded whitespace-nowrap"
+								>
+									{tag}
+								</span>
+							))}
+						</div>
+						{project.repoLink && (
+							<a
+								href={project.repoLink}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center px-3 py-2 bg-blue-700 rounded-lg text-white hover:bg-blue-800"
+							>
+								View on GitHub
+							</a>
+						)}
+					</div>
+				))}
+			</Slider>
 		</div>
 	);
-};
-
-export default Responsive;
+}
