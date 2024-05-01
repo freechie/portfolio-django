@@ -2,6 +2,6 @@
 {% load render_bundle from webpack_loader %}
 {% block content %}
 {% load static %}
-<div id="app"></div>
+<div id="app" nonce="{{ csp_nonce }}"></div>
 {% render_bundle 'frontend' %}
 {% endblock %}

@@ -31,20 +31,20 @@
       "publicPath": "/static/frontend/fb6f3c230cb846e25247.gif",
       "sourceFilename": "node_modules/slick-carousel/slick/ajax-loader.gif"
     },
-    "frontend-503b9f2d0a854d4067b3.js": {
-      "name": "frontend-503b9f2d0a854d4067b3.js",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-503b9f2d0a854d4067b3.js",
-      "publicPath": "/static/frontend/frontend-503b9f2d0a854d4067b3.js"
+    "frontend-4fa63913c8c209b18f61.js": {
+      "name": "frontend-4fa63913c8c209b18f61.js",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-4fa63913c8c209b18f61.js",
+      "publicPath": "/static/frontend/frontend-4fa63913c8c209b18f61.js"
     },
-    "frontend-503b9f2d0a854d4067b3.js.LICENSE.txt": {
-      "name": "frontend-503b9f2d0a854d4067b3.js.LICENSE.txt",
-      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-503b9f2d0a854d4067b3.js.LICENSE.txt",
-      "publicPath": "/static/frontend/frontend-503b9f2d0a854d4067b3.js.LICENSE.txt"
+    "frontend-4fa63913c8c209b18f61.js.LICENSE.txt": {
+      "name": "frontend-4fa63913c8c209b18f61.js.LICENSE.txt",
+      "path": "/Users/what/Sites/portfolio/frontend/static/frontend/frontend-4fa63913c8c209b18f61.js.LICENSE.txt",
+      "publicPath": "/static/frontend/frontend-4fa63913c8c209b18f61.js.LICENSE.txt"
     }
   },
   "chunks": {
     "frontend": [
-      "frontend-503b9f2d0a854d4067b3.js"
+      "frontend-4fa63913c8c209b18f61.js"
     ]
   },
   "publicPath": "/static/frontend/"
