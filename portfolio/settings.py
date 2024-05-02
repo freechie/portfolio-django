@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "corsheaders",
     "captcha",
+    "csp",
 ]
 
 MIDDLEWARE = [
@@ -52,12 +53,14 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "django_portion.middleware.NonceMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "csp.middleware.CSPMiddleware",
 
 ]
 
@@ -187,3 +190,8 @@ WEBPACK_LOADER = {
 }
 
 CAPTCHA_IMAGE_SIZE = (100, 60)  # Width x Height in pixels
+
+
+CSP_STYLE_SRC = (
+    "'self'",
+)

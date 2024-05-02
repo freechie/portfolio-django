@@ -1,7 +1,11 @@
 {% extends 'django_portion/base.html' %}
 {% load render_bundle from webpack_loader %}
-{% block content %}
 {% load static %}
-<div id="app" nonce="{{ csp_nonce }}"></div>
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="style-src 'self'">
+</head>
+{% block content %}
+<div id="app"></div>
 {% render_bundle 'frontend' %}
 {% endblock %}

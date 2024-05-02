@@ -33,14 +33,23 @@ class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 def index(request):
-    response = render(request, 'django_portion/index.html')
-    return response
+    projects = Project.objects.all()
+    tags_with_counts = Tag.objects.annotate(
+        num_projects=Count('project')).order_by('-num_projects')
+    display_items = {'projects': projects}
+
+    return render(request, 'django_portion/index.html', {
+        'display_items': display_items,
+        'tags_with_counts': tags_with_counts,
+        'projects': projects,
+    })
 
 
 def project_index(request):
     projects = Project.objects.prefetch_related('images').all()
     context = {
-        'projects': projects
+        'projects': projects,
+        'nonce': request.nonce
     }
     return render(request, 'django_portion/project_index.html', context)
 
@@ -94,7 +103,7 @@ def blog_index(request):
 # View for individual Blog post detail page
 
 
-# @ ratelimit(key='ip', rate='5/m', method='POST', block=True)
+# @ ratelimit(key='ip', rate='5/m', method='POST', block=True) uncommment in prod
 def blog_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     comments = post.comments.filter(approved=True)

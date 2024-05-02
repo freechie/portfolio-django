@@ -8,7 +8,6 @@ from django.urls import reverse
 class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    # General link, could be to a live version
     link = models.URLField(blank=True, null=True)
     repo_link = models.URLField(blank=True, verbose_name='Repository Link')
     created_at = models.DateTimeField(auto_now_add=True)

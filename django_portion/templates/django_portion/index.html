@@ -1,6 +1,43 @@
 {% extends 'django_portion/base.html' %}
+{% load static %}
 
 {% block content %}
-{% load static %}
-<div id="app"></div>
+<div class="text-5xl text-center text-semibold p-10">
+    <h1>My recent projects</h1>
+</div>
+<div class="carousel carousel-center pb-16 bg-transparent max-w-fit mx-auto">
+    {% for project in display_items.projects %}
+    <div
+        class="carousel-item bg-gradient-to-t from-transparent to-neutral-100 dark:bg-gradient-to-b dark:from-transparent dark:to-inherit text-slate-700 dark:text-neutral-50 m-5 rounded-lg max-w-lg">
+        <div class="card card-compact shadow-xl">
+            <figure>
+                <img class="rounded-lg w-full object-cover max-h-96 mb-8" src="{{ project.images.first.image.url }}"
+                    alt="{{ project.title }}">
+            </figure>
+            <div class="card-body">
+                <h2 class="card-title text-2xl font-semibold font-montserrat mb-2">{{ project.title }}</h2>
+                <p class="text-lg font-sans mb-4">{{ project.description }}</p>
+                <p class="block text-lg font-semibold mb-4">Role: {{ project.contribution_role }}</p>
+                <div class="tags">
+                    {% for tag in project.tags.all %}
+                    <a href="{% url 'blog_by_tag' tag_name=tag.name %}"
+                        class="bg-gradient-to-r from-indigo-500 to-celestialblue-500 text-neutral-100 text-sm font-mono p-2.5 px-4 m-2 rounded-full inline-block">
+                        {{ tag.name }}
+                    </a>
+                    {% endfor %}
+                </div>
+                <div class="card-actions justify-end">
+                    <a href="{{ project.repo_link }}"
+                        class="btn inline-flex items-center justify-center px-4 py-2 dark:bg-gradient-to-r bg-primary dark:from-celestialblue-300 dark:to-celestialblue-400 rounded-lg text-neutral-200 mt-4">Visit
+                        Github Repo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="carousel-item">
+        <p>No projects available.</p>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

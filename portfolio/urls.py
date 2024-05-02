@@ -13,7 +13,7 @@ router.register(r'projects', ProjectViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("frontend.urls")),
+    path("", views.index, name="index"),
     path("blog/", views.blog_index, name="blog_index"),
     path("blog/<int:pk>/", views.blog_detail, name="blog_detail"),
     path("about/", views.about_me, name="about_me"),
