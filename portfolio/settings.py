@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "tailwind",
     "theme",
-    "django_browser_reload",
+    # "django_browser_reload",  # Removed for production
     "corsheaders",
     "captcha",
     "csp",
@@ -40,15 +40,15 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django_portion.middleware.NonceMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
+    # "django_browser_reload.middleware.BrowserReloadMiddleware",
     "csp.middleware.CSPMiddleware",
 
 ]
@@ -186,3 +186,10 @@ SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_CONTENT_TYPE_NOSNIFF = True
 CSRF_COOKIE_SECURE = True
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+WHITENOISE_MAX_AGE = 31536000  # One year in seconds
+if not DEBUG:
+    WHITENOISE_USE_FINDERS = False
