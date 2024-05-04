@@ -16,3 +16,7 @@
 		text-align: center;
 	}
 }
+
+#responsive-carousel {
+	max-width: 100vw;
+}
