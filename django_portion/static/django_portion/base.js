@@ -7,19 +7,21 @@ document.addEventListener("DOMContentLoaded", function () {
 	const scrollRightButton = document.getElementById("scrollRightButton");
 	const emojiLink = document.querySelector(".emoji-link");
 
-	setTimeout(() => {
-		emojiLink.classList.remove("hidden"); // Remove the hidden class to start the transition
-	}, 100); // Delay might be adjusted depending on your needs
-
-	if (scrollLeftButton) {
-		scrollLeftButton.addEventListener("click", scrollLeft);
+	if (emojiLink) {
+		setTimeout(() => {
+			emojiLink.classList.remove("hidden"); // Trigger emoji link transition
+		}, 100);
 	}
 
-	if (scrollRightButton) {
-		scrollRightButton.addEventListener("click", scrollRight);
+	function addScrollEvent(button, handler) {
+		if (button) {
+			button.addEventListener("click", handler);
+		}
 	}
 
-	// Function to open or close the menu with animation
+	addScrollEvent(scrollLeftButton, scrollLeft);
+	addScrollEvent(scrollRightButton, scrollRight);
+
 	function toggleMenu(open) {
 		if (open) {
 			menu.classList.remove("hidden");
@@ -36,50 +38,40 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
-	// Adjusts the menu and hamburger icon based on the window size
 	function adjustMenuForWindowSize() {
 		if (window.innerWidth >= 1024) {
-			// Window is wider than 1024px
-			menuToggleContainer.style.opacity = 0; // Hide hamburger icon
-			toggleMenu(true); // Show menu items without animation
+			menuToggleContainer.style.opacity = 0;
+			toggleMenu(true);
 		} else {
-			// Window is less than 1024px
-			menuToggleContainer.style.opacity = 1; // Show hamburger icon
+			menuToggleContainer.style.opacity = 1;
 			if (!menu.classList.contains("hidden")) {
-				toggleMenu(false); // Hide menu items with animation
+				toggleMenu(false);
 			}
 		}
 	}
 
-	// Event listener for the hamburger menu toggle click event
-	menuToggle.addEventListener("click", function () {
-		const isOpen = menu.classList.contains("hidden");
-		toggleMenu(isOpen);
-	});
+	menuToggle.addEventListener("click", () =>
+		toggleMenu(menu.classList.contains("hidden"))
+	);
 
-	// Event listeners for each link in the navigation menu to close the menu on click
 	navLinks.forEach((link) => {
 		link.addEventListener("click", () => {
 			if (window.innerWidth < 1024) {
-				toggleMenu(false); // Close menu
+				toggleMenu(false);
 			}
 		});
 	});
 
-	// Event listener for window resize events
 	window.addEventListener("resize", adjustMenuForWindowSize);
-
-	// Initial adjustment based on the current window size
 	adjustMenuForWindowSize();
 });
 
-// Assuming the nonce is set on a meta tag with the name attribute set to 'csp-nonce'
 const cspNonceMeta = document.querySelector('meta[name="csp-nonce"]');
 if (cspNonceMeta) {
 	window.CSP_NONCE = cspNonceMeta.content;
 }
 
-var swiper = new Swiper(".centered-slide-carousel", {
+const swiper = new Swiper(".centered-slide-carousel", {
 	centeredSlides: true,
 	paginationClickable: true,
 	loop: true,
