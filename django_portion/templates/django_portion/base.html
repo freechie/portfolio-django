@@ -8,11 +8,15 @@
   <title>{% block title %}My Portfolio{% endblock %}</title>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csp-nonce" content="{{ request.nonce }}">
+
+
+  {% tailwind_preload_css %}
   {% tailwind_css %}
 
   <link rel="shortcut icon" href="{% static '/django_portion/favicon.ico' %}" nonce="{{ request.nonce }}">
   <link rel="stylesheet" href="{% static 'django_portion/style.css' %}" nonce="{{ request.nonce }}">
   <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" nonce="{{ request.nonce }}" />
+
 
 
 </head>
