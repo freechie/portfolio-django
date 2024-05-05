@@ -24,13 +24,15 @@
                     <p class="role text-sm font-mono mb-4">Role: {{ project.contribution_role }}</p>
                     <div class="tags">
                         {% for tag in project.tags.all %}
-                        <a href="{% url 'blog_by_tag' tag_name=tag.name %}" class="tag-link">
+                        <a href="{% url 'blog_by_tag' tag_name=tag.name %}"
+                            class="tag-link bg-gradient-to-r from-indigo-500 to-celestialblue-500 text-neutral-100 text-sm font-mono p-2.5 px-4 m-2 rounded-full inline-block">
                             {{ tag.name }}
                         </a>
                         {% endfor %}
                     </div>
-                    <div class="card-actions">
-                        <a href="{{ project.repo_link }}" class="repo-link">
+                    <div class="card-actions justify-end">
+                        <a href="{{ project.repo_link }}"
+                            class="repo-link btn inline-flex items-center justify-center px-4 py-2 dark:bg-gradient-to-r from-celestialblue-300 to-celestialblue-400 rounded-lg text-neutral-200 mt-4">
                             Visit Github Repo
                         </a>
                     </div>

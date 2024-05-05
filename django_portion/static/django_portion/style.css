@@ -97,3 +97,15 @@
 		color: #ffffff;
 	}
 }
+
+.emoji-link {
+	display: inline-block; /* Allows transformation */
+	transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Smooth transition for opacity and movement */
+	opacity: 1; /* Default opacity */
+}
+
+/* You can control the initial state with additional classes or JavaScript */
+.emoji-link.hidden {
+	opacity: 0; /* Start hidden */
+	transform: translateY(-20px); /* Starts slightly above its final position */
+}

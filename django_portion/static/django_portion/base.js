@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	const navLinks = document.querySelectorAll("#menu a");
 	const scrollLeftButton = document.getElementById("scrollLeftButton");
 	const scrollRightButton = document.getElementById("scrollRightButton");
+	const emojiLink = document.querySelector(".emoji-link");
+
+	setTimeout(() => {
+		emojiLink.classList.remove("hidden"); // Remove the hidden class to start the transition
+	}, 100); // Delay might be adjusted depending on your needs
 
 	if (scrollLeftButton) {
 		scrollLeftButton.addEventListener("click", scrollLeft);
