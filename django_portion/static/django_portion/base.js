@@ -5,12 +5,15 @@ document.addEventListener("DOMContentLoaded", function () {
 	const navLinks = document.querySelectorAll("#menu a");
 	const scrollLeftButton = document.getElementById("scrollLeftButton");
 	const scrollRightButton = document.getElementById("scrollRightButton");
-	const emojiLink = document.querySelector(".emoji-link");
 
-	if (emojiLink) {
-		setTimeout(() => {
-			emojiLink.classList.remove("hidden"); // Trigger emoji link transition
-		}, 100);
+	function scrollLeft() {
+		const container = document.querySelector(".carousel-container");
+		container.scrollBy({ left: -300, behavior: "smooth" });
+	}
+
+	function scrollRight() {
+		const container = document.querySelector(".carousel-container");
+		container.scrollBy({ left: 300, behavior: "smooth" });
 	}
 
 	function addScrollEvent(button, handler) {
@@ -64,45 +67,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	window.addEventListener("resize", adjustMenuForWindowSize);
 	adjustMenuForWindowSize();
+
+	const swiper = new Swiper(".centered-slide-carousel", {
+		centeredSlides: true,
+		paginationClickable: true,
+		loop: true,
+		spaceBetween: 30,
+		slideToClickedSlide: true,
+		pagination: {
+			el: ".centered-slide-carousel .swiper-pagination",
+			clickable: true,
+		},
+		breakpoints: {
+			1920: {
+				slidesPerView: 4,
+				spaceBetween: 30,
+			},
+			1028: {
+				slidesPerView: 2,
+				spaceBetween: 10,
+			},
+			990: {
+				slidesPerView: 1,
+				spaceBetween: 0,
+			},
+		},
+	});
 });
 
 const cspNonceMeta = document.querySelector('meta[name="csp-nonce"]');
 if (cspNonceMeta) {
 	window.CSP_NONCE = cspNonceMeta.content;
-}
-
-const swiper = new Swiper(".centered-slide-carousel", {
-	centeredSlides: true,
-	paginationClickable: true,
-	loop: true,
-	spaceBetween: 30,
-	slideToClickedSlide: true,
-	pagination: {
-		el: ".centered-slide-carousel .swiper-pagination",
-		clickable: true,
-	},
-	breakpoints: {
-		1920: {
-			slidesPerView: 4,
-			spaceBetween: 30,
-		},
-		1028: {
-			slidesPerView: 2,
-			spaceBetween: 10,
-		},
-		990: {
-			slidesPerView: 1,
-			spaceBetween: 0,
-		},
-	},
-});
-
-function scrollLeft() {
-	const container = document.querySelector(".carousel-container");
-	container.scrollBy({ left: -300, behavior: "smooth" });
-}
-
-function scrollRight() {
-	const container = document.querySelector(".carousel-container");
-	container.scrollBy({ left: 300, behavior: "smooth" });
 }
