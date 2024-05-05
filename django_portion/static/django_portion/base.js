@@ -3,6 +3,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	const menuToggleContainer = document.getElementById("menu-toggle-container");
 	const menu = document.getElementById("menu");
 	const navLinks = document.querySelectorAll("#menu a");
+	const scrollLeftButton = document.getElementById("scrollLeftButton");
+	const scrollRightButton = document.getElementById("scrollRightButton");
+
+	if (scrollLeftButton) {
+		scrollLeftButton.addEventListener("click", scrollLeft);
+	}
+
+	if (scrollRightButton) {
+		scrollRightButton.addEventListener("click", scrollRight);
+	}
 
 	// Function to open or close the menu with animation
 	function toggleMenu(open) {
@@ -89,3 +99,13 @@ var swiper = new Swiper(".centered-slide-carousel", {
 		},
 	},
 });
+
+function scrollLeft() {
+	const container = document.querySelector(".carousel-container");
+	container.scrollBy({ left: -300, behavior: "smooth" });
+}
+
+function scrollRight() {
+	const container = document.querySelector(".carousel-container");
+	container.scrollBy({ left: 300, behavior: "smooth" });
+}

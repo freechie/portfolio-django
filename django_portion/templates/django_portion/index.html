@@ -6,40 +6,46 @@
     <h1>Recent Projects</h1>
 </div>
 <div class="relative overflow-hidden w-full mx-auto responsive-carousel">
-    <div class="flex snap-x snap-mandatory overflow-x-auto scroll-smooth whitespace-nowrap scroll-p-4 px-2">
+    <!-- Left Scroll Button -->
+    <button id="scrollLeftButton" class="left-scroll-btn">&#9664;</button>
+    <div
+        class="carousel-container flex snap-x snap-mandatory overflow-x-auto scroll-smooth whitespace-nowrap scroll-p-4 px-2">
         {% for project in display_items.projects %}
-        <div class="snap-start w-screen shrink-0 px-3 py-8">
+        <div class="project-card snap-start w-screen shrink-0 px-3 py-8">
             <div
-                class="bg-transparent dark:bg-gradient-to-t from-transparent to-inherit text-slate-700 dark:text-neutral-50 rounded-lg shadow-xl max-w-xl mx-auto">
+                class="card-bg dark:bg-gradient-to-t from-transparent to-inherit text-slate-700 dark:text-neutral-50 rounded-lg shadow-xl max-w-xl mx-auto">
                 <figure>
-                    <img class="rounded-lg w-full object-cover h-96" src="{{ project.images.first.image.url }}"
-                        alt="{{ project.title }}">
+                    <img src="{{ project.images.first.image.url }}" alt="{{ project.title }}"
+                        class="rounded-lg w-full object-cover h-96">
                 </figure>
                 <div class="card-body p-4">
-                    <h2 class="card-title text-3xl font-semibold font-montserrat mb-2">{{ project.title }}</h2>
-                    <p class="text-md font-sans mb-2">{{ project.description }}</p>
-                    <p class="block text-sm font-mono mb-4">Role: {{ project.contribution_role }}</p>
+                    <h2 class="card-title text-3xl font-semibold mb-2">{{ project.title }}</h2>
+                    <p class="project-description text-md mb-2">{{ project.description }}</p>
+                    <p class="role text-sm font-mono mb-4">Role: {{ project.contribution_role }}</p>
                     <div class="tags">
                         {% for tag in project.tags.all %}
-                        <a href="{% url 'blog_by_tag' tag_name=tag.name %}"
-                            class="bg-gradient-to-r from-indigo-500 to-celestialblue-500 text-neutral-100 text-sm font-mono p-2.5 px-4 m-2 rounded-full inline-block">
+                        <a href="{% url 'blog_by_tag' tag_name=tag.name %}" class="tag-link">
                             {{ tag.name }}
                         </a>
                         {% endfor %}
                     </div>
-                    <div class="card-actions justify-end">
-                        <a href="{{ project.repo_link }}"
-                            class="btn inline-flex items-center justify-center px-4 py-2 dark:bg-gradient-to-r from-celestialblue-300 to-celestialblue-400 rounded-lg text-neutral-200 mt-4">Visit
-                            Github Repo</a>
+                    <div class="card-actions">
+                        <a href="{{ project.repo_link }}" class="repo-link">
+                            Visit Github Repo
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
         {% empty %}
-        <div class="snap-start w-full shrink-0 text-center">
+        <div class="no-projects snap-start w-full shrink-0 text-center">
             <p>No projects available.</p>
         </div>
         {% endfor %}
     </div>
+
+    <!-- Right Scroll Button -->
+    <button id="scrollRightButton" class="right-scroll-btn">&#9654;</button>
+
 </div>
 {% endblock %}
