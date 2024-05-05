@@ -193,3 +193,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 WHITENOISE_MAX_AGE = 31536000  # One year in seconds
 if not DEBUG:
     WHITENOISE_USE_FINDERS = False
+
+CSP_SCRIPT_SRC = (
+    "'self'",
+    "https://static.cloudflareinsights.com",
+    # Add other script sources as needed
+)
+CSP_INCLUDE_NONCE_IN = ['script-src']
