@@ -17,6 +17,7 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = ['174.138.70.92', 'johndev.io', 'www.johndev.io', '127.0.0.1']
 
+
 INSTALLED_APPS = [
     "webpack_loader",
     "django_portion.apps.DjangoPortionConfig",
