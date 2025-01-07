@@ -201,3 +201,4 @@ CSP_SCRIPT_SRC = (
     # Add other script sources as needed
 )
 CSP_INCLUDE_NONCE_IN = ['script-src']
+

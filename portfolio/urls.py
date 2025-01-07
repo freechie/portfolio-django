@@ -7,6 +7,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.static import serve
 from django.http import HttpResponse
+from django.contrib.sitemaps.views import sitemap
 
 router = DefaultRouter()
 router.register(r'projects', ProjectViewSet)
@@ -25,8 +26,7 @@ urlpatterns = [
     path('project/<int:pk>/', views.project_detail, name='project_detail'),
     path("__reload__/", include("django_browser_reload.urls")),
     path('captcha/', include('captcha.urls')),
-
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_URL)
