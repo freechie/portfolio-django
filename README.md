@@ -7,7 +7,7 @@
 
 This project is an **iterative full-stack web application** designed as a personal portfolio and blog. It serves as a dynamic platform to continuously showcase my evolving skills, projects, and technical expertise as a software engineer. The application features a responsive frontend built with React, a robust backend powered by Django and Django Rest Framework, and integrates strong security practices, including a nonce-based Content Security Policy.
 
-This open-source framework provides a quick way to get a full-stack application up and running, leveraging the power of Django and React. Aspiring software engineers can utilize this project as a template to showcase their own work and administer their personal blog. While currently managed via a custom Django admin view, future iterations aim to integrate Wagtail's blogging CMS offerings. 
+This open-source framework provides a quick way to get a full-stack application up and running, leveraging the power of Django and React. Aspiring software engineers can utilize this project as a template to showcase their own work and administer their personal blog. While currently managed via custom Django views, future iterations aim to integrate Wagtail's blogging CMS offerings while providing full customizability to the developer. 
 
 ## 🚀 Features
 
@@ -24,13 +24,12 @@ This open-source framework provides a quick way to get a full-stack application 
 *   JavaScript
 *   SQL
 *   Bash
-*   C/C++
 *   HTML/CSS
 
 **Frontend:**
 *   React
 *   Tailwind CSS
-*   Bootstrap
+*   Daisy UI
 
 **Backend:**
 *   Django
@@ -38,17 +37,15 @@ This open-source framework provides a quick way to get a full-stack application 
 *   Node.js
 
 **Database:**
-*   SQLite3
+*   Current - SQLite3
+*   Soon - PostgreSQL
 
 **DevOps:**
 *   GitHub Actions
 *   Gunicorn
-*   DigitalOcean Ubuntu Server Droplet
 
 **Developer Tools:**
 *   Git
-*   NeoVim
-*   VS Code
 
 **Security:**
 *   Hashing
@@ -64,7 +61,7 @@ Follow these steps to set up and run the project locally.
 
 ### Prerequisites
 
-*   **Python 3.8+**
+*   **Python 3.12.7+**
 *   **Node.js** and **npm** (or Yarn)
 
 ### Backend Setup (Django)
