@@ -26,7 +26,7 @@ Follow these steps to set up and run the project locally.
 *   **Python 3.12.7+**
 *   **Node.js** and **npm** (or Yarn)
 
-### Backend Setup (Django)
+### 🧑🏽‍💻 Backend Setup (Django)
 
 1.  **Clone the repository:**
     ```bash
@@ -61,7 +61,7 @@ Follow these steps to set up and run the project locally.
     python manage.py runserver
     ```
 
-### Frontend Setup (React)
+### 🕶️ Frontend Setup (React)
 
 1.  **Navigate to the frontend directory:**
     ```bash
@@ -80,7 +80,7 @@ Follow these steps to set up and run the project locally.
     npm run dev # or yarn dev
     ```
 
-### Running the Application
+### 🏃🏽‍♂️ Running the Application
 
 Ensure both the Django backend and React frontend development servers are running.
 
