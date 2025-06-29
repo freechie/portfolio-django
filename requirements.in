@@ -1,0 +1,43 @@
+#
+# This file lists the direct dependencies of the project.
+# Use pip-compile to generate the requirements.txt lock file.
+#
+# How to use:
+#   pip-compile requirements.in
+#   pip-sync
+#
+
+# -- Core Frameworks --
+Django
+gunicorn
+djangorestframework
+
+# -- Django Plugins --
+django-browser-reload
+django-cors-headers
+django-environ
+django-ranged-response
+django-ratelimit
+django-simple-captcha
+django-taggit
+django-tailwind
+django-webpack-loader
+django_csp
+whitenoise  # For serving static files in production
+
+# -- General Python Libraries --
+arrow                   # For better dates and times
+Authlib                 # For authentication tasks
+pillow                  # For image processing
+pymemcache              # For caching
+python-slugify          # For creating URL-friendly slugs
+requests                # For making HTTP requests
+
+# -- Development & Tooling --
+# These are for managing and checking your project.
+# For more advanced setups, you could move these to a
+# separate requirements-dev.in file.
+pip-tools
+bandit                  # Security linter
+safety                  # Checks for vulnerable packages
+cookiecutter            # Project templating
