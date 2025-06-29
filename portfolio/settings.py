@@ -1,7 +1,6 @@
 import os
 import environ
 from pathlib import Path
-from django.core.exceptions import ImproperlyConfigured
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -15,7 +14,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = ['localhost', '172.26.139.35', '[::1]', 'johndev.io', 'www.johndev.io', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '[::1]', '127.0.0.1']
 
 INSTALLED_APPS = [
     "webpack_loader",
@@ -186,9 +185,12 @@ SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 SECURE_CONTENT_TYPE_NOSNIFF = True
 CSRF_COOKIE_SECURE = True
-
+SECURE_SSL_REDIRECT = True
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+SESSION_COOKIE_SECURE = True
 
+
+SECURE_HSTS_SECONDS = 31536000
 
 WHITENOISE_MAX_AGE = 31536000  # One year in seconds
 if not DEBUG:
@@ -196,7 +198,6 @@ if not DEBUG:
 
 CSP_SCRIPT_SRC = (
     "'self'",
-    "https://static.cloudflareinsights.com",
     # Add other script sources as needed
 )
 CSP_INCLUDE_NONCE_IN = ['script-src']
