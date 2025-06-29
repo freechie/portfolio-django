@@ -17,44 +17,6 @@ This open-source framework provides a quick way to get a full-stack application 
 *   **Robust Security:** Implements advanced security measures including CAPTCHA, HTTPS, Rate Limiting, and a strict, nonce-based Content Security Policy (CSP).
 *   **Dynamic User Interface:** A fast and interactive user experience powered by React.
 
-## 🛠️ Technologies & Tools
-
-**Languages:**
-*   Python
-*   JavaScript
-*   SQL
-*   Bash
-*   HTML/CSS
-
-**Frontend:**
-*   React
-*   Tailwind CSS
-*   Daisy UI
-
-**Backend:**
-*   Django
-*   Django Rest Framework
-*   Node.js
-
-**Database:**
-*   Current - SQLite3
-*   Soon - PostgreSQL
-
-**DevOps:**
-*   GitHub Actions
-*   Gunicorn
-
-**Developer Tools:**
-*   Git
-
-**Security:**
-*   Hashing
-*   CAPTCHA
-*   HTTPS
-*   Rate Limiting
-*   Content Security Policy (CSP) via `django-csp`
-*   Nonce generation/handling for scripts
-
 ## ⚙️ Installation Guide
 
 Follow these steps to set up and run the project locally.
@@ -126,3 +88,41 @@ Ensure both the Django backend and React frontend development servers are runnin
 *   **Frontend:** `npm run dev` (webpack will build assets and Django will serve them)
 
 You can then access the application in your web browser at `http://127.0.0.1:8000/` (or the address where your Django server is running).
+
+## 🛠️ Technologies & Tools
+
+**Languages:**
+*   Python
+*   JavaScript
+*   SQL
+*   Bash
+*   HTML/CSS
+
+**Frontend:**
+*   React
+*   Tailwind CSS
+*   Daisy UI
+
+**Backend:**
+*   Django
+*   Django Rest Framework
+*   Node.js
+
+**Database:**
+*   Current - SQLite3
+*   Soon - PostgreSQL
+
+**DevOps:**
+*   GitHub Actions
+*   Gunicorn
+
+**Developer Tools:**
+*   Git
+
+**Security:**
+*   Hashing
+*   CAPTCHA
+*   HTTPS
+*   Rate Limiting
+*   Content Security Policy (CSP) via `django-csp`
+*   Nonce generation/handling for scripts
