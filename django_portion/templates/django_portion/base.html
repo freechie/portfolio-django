@@ -1,85 +1,147 @@
 {% load static tailwind_tags %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}My Portfolio{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="csp-nonce" content="{{ request.nonce }}" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}My Portfolio{% endblock %}</title>
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="csp-nonce" content="{{ request.nonce }}">
+    {% tailwind_preload_css %} {% tailwind_css %}
 
+    <link
+      rel="shortcut icon"
+      href="{% static '/django_portion/favicon.ico' %}"
+      nonce="{{ request.nonce }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'django_portion/style.css' %}"
+      nonce="{{ request.nonce }}"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+      nonce="{{ request.nonce }}"
+    />
+  </head>
 
-  {% tailwind_preload_css %}
-  {% tailwind_css %}
-
-  <link rel="shortcut icon" href="{% static '/django_portion/favicon.ico' %}" nonce="{{ request.nonce }}">
-  <link rel="stylesheet" href="{% static 'django_portion/style.css' %}" nonce="{{ request.nonce }}">
-  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" nonce="{{ request.nonce }}" />
-
-
-
-</head>
-
-<body
-  class="flex flex-col min-h-screen bg-gradient-to-t from-neutral-200 to-neutral-100 dark:bg-gradient-to-b dark:from-slate-950 dark:to-slate-800">
-  <div class="flex-grow">
-    <header>
-      <nav
-        class="sticky top-0 z-10 flex items-center justify-between border-b-2 flex-wrap bg-gradient-to-r from-celestialblue-800 to-indigo-600 border-slate-950 dark:border-slate-700 dark:bg-gradient-to-tr dark:from-celestialblue-200 dark:to-indigo-900 text-cyan-50">
-        <div class="max-w-5xl mx-auto px-4 flex-shrink-0 mr-4">
-          <div class="flex items-center justify-between h-16">
-            <a href="{% url 'blog_index' %}" class="font-bold text-5xl tracking-tight" alt="blog">🌌</a>
+  <body
+    class="flex flex-col min-h-screen bg-gradient-to-t from-neutral-200 to-neutral-100 dark:bg-gradient-to-b dark:from-slate-950 dark:to-slate-800"
+  >
+    <div class="flex-grow">
+      <header>
+        <nav
+          class="sticky top-0 z-10 flex items-center justify-between border-b-2 flex-wrap bg-gradient-to-r from-celestialblue-800 to-indigo-600 border-slate-950 dark:border-slate-700 dark:bg-gradient-to-tr dark:from-celestialblue-200 dark:to-indigo-900 text-cyan-50"
+        >
+          <div class="max-w-5xl mx-auto px-4 flex-shrink-0 mr-4">
+            <div class="flex items-center justify-between h-16">
+              <a
+                href="{% url 'blog_index' %}"
+                class="font-bold text-5xl tracking-tight"
+                alt="blog"
+                >🌌</a
+              >
+            </div>
           </div>
-        </div>
-        <div class="flex-none block lg:hidden pr-4" id="menu-toggle-container">
-          <button id="menu-toggle"
-            class="flex items-center px-2 py-2 border-2 rounded text-success border-success hover:text-indigo-800 hover:border-indigo-800">
-            <svg class="fill-current h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </button>
-        </div>
-        <div class="w-full block flex-grow lg:flex lg:w-auto md: text-center sm:text-right" id="menu">
-          <div class="flex-1 text-lg space-x-3 p-4 py-4 lg:flex-grow">
-            <a href="/"
-              class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700 pl-3">Portfolio</a>
-            <a href="{% url 'blog_index' %}"
-              class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700 ">Blog</a>
-            <a href="{% url 'about_me' %}"
-              class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700 ">About</a>
-            <a href="{% url 'resume' %}"
-              class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700 ">Resume</a>
-            <a href="{% url 'contact' %}"
-              class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700">Contact</a>
+          <div
+            class="flex-none block lg:hidden pr-4"
+            id="menu-toggle-container"
+          >
+            <button
+              id="menu-toggle"
+              class="flex items-center px-2 py-2 border-2 rounded text-success border-success hover:text-indigo-800 hover:border-indigo-800"
+            >
+              <svg
+                class="fill-current h-4 w-4"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>Menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+              </svg>
+            </button>
           </div>
-        </div>
-      </nav>
-    </header>
-    <main>
-      {% block content %}
-      <!-- Main content injected here -->
-      {% endblock %}
-    </main>
-  </div>
-  <footer
-    class="text-platinum-500 bg-gradient-to-bl from-celestialblue-600 to-indigo-700 border-slate-950 dark:bg-gradient-to-l dark:from-celestialblue-200 dark:to-indigo-900 border-t-2 dark:border-slate-900 dark:text-cyan-50 w-full text-lg">
-    <div class="max-w-6xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <p>© 2024 John R. Molina. All rights reserved.</p>
-        <p>Made with JavaScript, Django, Tailwind, and a whole lot of</p>
-        <p class="text-2xl">❤️‍🔥</p>
-        <div class="space-x-4 md:justify-start md:space-x-6 m-2 text-xl">
-          <a href="https://twitter.com/rich_txt_editor" target="_blank" class="hover:text-celestialblue-700">Twitter</a>
-          <a href="https://github.com/rich-txt-editor" target="_blank" class="hover:text-celestialblue-700">GitHub</a>
-          <a href="https://linkedin.com/in/jrmolin90" target="_blank" class="hover:text-celestialblue-700">LinkedIn</a>
+          <div
+            class="w-full block flex-grow lg:flex lg:w-auto md: text-center sm:text-right"
+            id="menu"
+          >
+            <div class="flex-1 text-lg space-x-3 p-4 py-4 lg:flex-grow">
+              <a
+                href="/"
+                class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700 pl-3"
+                >Portfolio</a
+              >
+              <a
+                href="{% url 'blog_index' %}"
+                class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700"
+                >Blog</a
+              >
+              <a
+                href="{% url 'about_me' %}"
+                class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700"
+                >About</a
+              >
+              <a
+                href="{% url 'resume' %}"
+                class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700"
+                >Resume</a
+              >
+              <a
+                href="{% url 'contact' %}"
+                class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700"
+                >Contact</a
+              >
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main>
+        {% block content %}
+        <!-- Main content injected here -->
+        {% endblock %}
+      </main>
+    </div>
+    <footer
+      class="text-platinum-500 bg-gradient-to-bl from-celestialblue-600 to-indigo-700 border-slate-950 dark:bg-gradient-to-l dark:from-celestialblue-200 dark:to-indigo-900 border-t-2 dark:border-slate-900 dark:text-cyan-50 w-full text-lg"
+    >
+      <div class="max-w-6xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <p>© 2024 John R. Molina. All rights reserved.</p>
+          <p>Made with JavaScript, Django, Tailwind, and a whole lot of</p>
+          <p class="text-2xl">❤️‍🔥</p>
+          <div class="space-x-4 md:justify-start md:space-x-6 m-2 text-xl">
+            <a
+              href="https://twitter.com/rich_txt_editor"
+              target="_blank"
+              class="hover:text-celestialblue-700"
+              >Twitter</a
+            >
+            <a
+              href="https://github.com/rich-txt-editor"
+              target="_blank"
+              class="hover:text-celestialblue-700"
+              >GitHub</a
+            >
+            <a
+              href="https://linkedin.com/in/jrmolin90"
+              target="_blank"
+              class="hover:text-celestialblue-700"
+              >LinkedIn</a
+            >
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
-  <script defer src="{% static '/django_portion/base.js' %}" nonce="{{ request.nonce }}"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" nonce="{{ request.nonce }}"></script>
-</body>
-
+    </footer>
+    <script
+      defer
+      src="{% static '/django_portion/base.js' %}"
+      nonce="{{ request.nonce }}"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      nonce="{{ request.nonce }}"
+    ></script>
+  </body>
 </html>
