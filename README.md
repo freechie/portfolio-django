@@ -45,4 +45,4 @@ Access the app at `http://localhost:8000`.
 *   **Wagtail CMS:** `/portal/`
 
 ---
-© 2024 John R. Molina
+© 2026 John R. Molina
