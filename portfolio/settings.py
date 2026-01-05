@@ -28,7 +28,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # ==============================================================================
 # The secret key for cryptographic signing. Loaded from the .env file for security.
 # This app will not start if the key is missing.
-SECRET_KEY = env('DJANGO_SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 
 # Debug mode. Loaded from .env (e.g., DEBUG=True).
 # Crucially, this should ALWAYS be False in a production environment.
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
     # Your project's local apps
     "django_portion.apps.DjangoPortionConfig",
+    "frontend.apps.FrontendConfig",
 
     # Core Django apps
     "django.contrib.admin",
@@ -70,8 +71,25 @@ INSTALLED_APPS = [
     # Your local theme app
     "theme",
 
-    # Example of a development-only app, commented out for production
-    # "django_browser_reload",
+    # Wagtail CMS apps
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail',
+    'modelcluster',
+
+    # Your Wagtail blog app
+    'blog',
+
+    # Development-only app
+    "django_browser_reload",
 ]
 
 # Middleware processes requests and responses globally. The order is critical.
@@ -99,8 +117,8 @@ MIDDLEWARE = [
     # Middleware for Content Security Policy.
     "csp.middleware.CSPMiddleware",
 
-    # Example of a development-only middleware, commented out for production
-    # "django_browser_reload.middleware.BrowserReloadMiddleware",
+    # Development-only middleware
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 # The root URL configuration module for the project.
@@ -260,12 +278,15 @@ CAPTCHA_IMAGE_SIZE = (100, 60)  # Width x Height in pixels
 # ==============================================================================
 # SECURITY SETTINGS
 # ==============================================================================
-# Defines allowed sources for stylesheets, enhancing Content Security Policy (CSP).
-CSP_STYLE_SRC = ("'self'",)
-# Defines allowed sources for scripts.
-CSP_SCRIPT_SRC = ("'self'",)
-# Instructs `django-csp` to automatically add a `nonce` attribute to script tags.
-CSP_INCLUDE_NONCE_IN = ['script-src']
+# Configuration for Content Security Policy (CSP).
+# Enhances security by specifying which dynamic resources are allowed to load.
+CONTENT_SECURITY_POLICY = {
+    "DIRECTIVES": {
+        "style-src": ["'self'"],
+        "script-src": ["'self'"],
+    },
+    "INCLUDE_NONCE_IN": ["script-src"],
+}
 
 # Enables the browser's built-in XSS protection.
 SECURE_BROWSER_XSS_FILTER = True
@@ -276,6 +297,34 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 
 # Sets how long the browser should cache static files served by WhiteNoise (in seconds).
 WHITENOISE_MAX_AGE = 31536000  # One year
+
+# Wagtail-specific settings
+WAGTAIL_SITE_NAME = "Your Portfolio"
+
+if env("DEBUG"):
+    WAGTAILADMIN_BASE_URL = "http://127.0.0.1:8000"
+else:
+    WAGTAILADMIN_BASE_URL = "https://your-domain.com"
+
+# Wagtail image upload limits
+WAGTAIL_IMAGES_MAX_UPLOAD_SIZE = 5242880  # 5 MB
+WAGTAIL_IMAGES_MAX_IMAGE_PIXELS = 12000000  # 12 MP
+WAGTAIL_IMAGES_MIN_IMAGE_WIDTH = 50
+WAGTAIL_IMAGES_MIN_IMAGE_HEIGHT = 50
+
+# Wagtail document upload limits
+WAGTAIL_DOCUMENTS_MAX_FILE_SIZE = 10485760  # 10 MB
+
+# Search configuration
+WAGTAIL_SEARCH_BACKEND = 'wagtail.search.backends.database'
+
+# Redirect configuration
+WAGTAIL_REDIRECT_GENERATION_ENABLED = True
+WAGTAIL_REDIRECT_FALLBACK_TO_SITEMAP = True
+WAGTAIL_REDIRECT_SITE = True
+
+# Snippets configuration
+WAGTAIL_SNIPPETS_ENABLED = True
 
 # --- PRODUCTION-ONLY SETTINGS ---
 # The settings in this block are only activated when DEBUG is False.

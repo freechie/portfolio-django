@@ -1,0 +1,81 @@
+# This file lists direct dependencies of your project.
+# Use pip-compile to generate a requirements.txt lock file.
+#
+# How to use:
+#   pip-compile requirements-wagtail.in
+#   pip-sync
+#
+#
+# 
+# -- Core Frameworks --
+# Django
+# gunicorn
+# djangorestframework
+# 
+# -- Django Plugins --
+# django-browser-reload
+# django-cors-headers
+# django-environ
+# django-ranged-response
+# django-ratelimit
+# django-simple-captcha
+# django-taggit
+# django-tailwind
+# django-webpack-loader
+# django_csp
+# 
+# -- General Python Libraries --
+# arrow                   # For better dates and times
+# Authlib                 # For authentication tasks
+# pillow                  # For image processing
+# pymemcache              # For caching
+# python-slugify          # For creating URL-friendly slugs
+# requests                # For making HTTP requests
+# 
+# -- Development & Tooling --
+# pip-tools
+# bandit                  # Security linter
+# safety                  # Checks for vulnerable packages
+# cookiecutter            # Project templating
+# 
+# -- Core Frameworks --
+# Django
+# gunicorn
+# djangorestframework
+# 
+# -- Django Plugins --
+# django-browser-reload
+# django-cors-headers
+# django-environ
+# django-ranged-response
+# django-ratelimit
+# django-simple-captcha
+# django-taggit
+# django-tailwind
+# django-webpack-loader
+# django_csp
+# whitenoise  # For serving static files in production
+
+# -- General Python Libraries --
+# arrow                   # For better dates and times
+# Authlib                 # For authentication tasks
+# pillow                  # For image processing
+# pymemcache              # For caching
+# python-slugify          # For creating URL-friendly slugs
+# requests                # For making HTTP requests
+# 
+# -- Development & Tooling --
+# pip-tools
+# bandit                  # Security linter
+# safety                  # Check for vulnerable packages
+# cookiecutter            # Project templating
+# 
+# -- Core Frameworks --
+Django
+# gunicorn
+# djangorestframework
+
+# Wagtail CMS
+wagtail>=7.2.1,<8.0
+django-modelcluster>=6.4,<7.0
+whitenoise>=6.9.0
