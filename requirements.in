@@ -41,3 +41,5 @@ pip-tools
 bandit                  # Security linter
 safety                  # Checks for vulnerable packages
 cookiecutter            # Project templating
+django-axes
+python-magic

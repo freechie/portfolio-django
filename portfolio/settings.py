@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "captcha",
     "csp",
+    "axes",
 
     # Your local theme app
     "theme",
@@ -102,14 +103,14 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     # Manages user sessions across requests.
     "django.contrib.sessions.middleware.SessionMiddleware",
-    # Custom middleware for your project.
-    "django_portion.middleware.NonceMiddleware",
     # Adds common headers and handles other basic web tasks.
     "django.middleware.common.CommonMiddleware",
     # Adds protection against Cross-Site Request Forgery.
     "django.middleware.csrf.CsrfViewMiddleware",
-    # Associates users with requests using sessions.
+    # assocaites users with requests using sessions.
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    # AxesMiddleware should be after AuthenticationMiddleware
+    "axes.middleware.AxesMiddleware",
     # Enables cookie- and session-based messaging.
     "django.contrib.messages.middleware.MessageMiddleware",
     # Protects against clickjacking by using the X-Frame-Options header.
@@ -120,6 +121,19 @@ MIDDLEWARE = [
     # Development-only middleware
     "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
+
+AUTHENTICATION_BACKENDS = [
+    # AxesStandaloneBackend should be first to keep track of failed logins
+    'axes.backends.AxesStandaloneBackend',
+    # Django ModelBackend is the default
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+# Axes Configuration
+AXES_FAILURE_LIMIT = 5  # Lock out after 5 attempts
+AXES_COOLOFF_TIME = 1  # Wait 1 hour before trying again
+AXES_LOCKOUT_TEMPLATE = None  # Use default lockout page
+AXES_RESET_ON_SUCCESS = True  # Reset failure counter on successful login
 
 # The root URL configuration module for the project.
 ROOT_URLCONF = "portfolio.urls"
@@ -285,7 +299,7 @@ CONTENT_SECURITY_POLICY = {
         "style-src": ["'self'"],
         "script-src": ["'self'"],
     },
-    "INCLUDE_NONCE_IN": ["script-src"],
+    "INCLUDE_NONCE_IN": ["script-src", "style-src"],
 }
 
 # Enables the browser's built-in XSS protection.
@@ -294,6 +308,18 @@ SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
 # Prevents the browser from misinterpreting files' content types.
 SECURE_CONTENT_TYPE_NOSNIFF = True
+X_CONTENT_TYPE_OPTIONS = 'nosniff'
+
+# Session and Cookie Security
+SESSION_COOKIE_HTTPONLY = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Logout when browser closes
+SESSION_COOKIE_AGE = 3600  # Logout after 1 hour of inactivity
+CSRF_COOKIE_HTTPONLY = False  # Must be False for some JS frameworks, but we'll keep it default
+CSRF_USE_SESSIONS = True  # Store CSRF token in session instead of cookie for extra security
+
+# Security headers for controlling information sharing and resource loading
+SECURE_REFERRER_POLICY = "same-origin"
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin"
 
 # Sets how long the browser should cache static files served by WhiteNoise (in seconds).
 WHITENOISE_MAX_AGE = 31536000  # One year

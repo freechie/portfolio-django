@@ -6,6 +6,7 @@ from django.db.models import Count, Q
 from django.contrib import messages
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
+from django_ratelimit.decorators import ratelimit
 
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -80,6 +81,7 @@ def blog_index(request):
 
     return render(request, 'django_portion/blog_index.html', context)
 
+@ratelimit(key='ip', rate='5/m', method='POST', block=True)
 def blog_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     comments = post.comments.filter(approved=True)
@@ -143,5 +145,6 @@ def resume(request):
     }
     return render(request, 'django_portion/resume.html', context)
 
+@ratelimit(key='ip', rate='5/m', method='POST', block=True)
 def contact(request):
     return render(request, 'django_portion/contact.html')

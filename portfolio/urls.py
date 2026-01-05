@@ -24,8 +24,8 @@ urlpatterns = [
     # Silence service-worker.js 404s
     path('service-worker.js', lambda r: HttpResponse("", content_type="application/javascript")),
 
-    # Wagtail admin
-    path('cms/', include(wagtailadmin_urls)),
+    # Wagtail admin (Obfuscated)
+    path('portal/', include(wagtailadmin_urls)),
     
     # Wagtail documents
     path('documents/', include(wagtaildocs_urls)),
@@ -49,7 +49,8 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path("__reload__/", include("django_browser_reload.urls")),
     path("captcha/", include("captcha.urls")),
-    path('admin/', admin.site.urls),
+    # Django Admin (Obfuscated)
+    path('dashboard/', admin.site.urls),
 ]
 
 # Media and Static files for development

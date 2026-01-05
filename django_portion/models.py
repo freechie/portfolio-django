@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from taggit.managers import TaggableManager
-from .validators import validate_file_size
+from .validators import validate_file_size, validate_file_type
 from django.urls import reverse
 
 
@@ -70,7 +70,7 @@ class Comment(models.Model):
 
 class Resume(models.Model):
     title = models.CharField(max_length=100)
-    upload = models.FileField(upload_to='resumes/')
+    upload = models.FileField(upload_to='resumes/', validators=[validate_file_size, validate_file_type])
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -81,7 +81,7 @@ class ProjectImage(models.Model):
     project = models.ForeignKey(
         Project, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(
-        upload_to='project_images/', validators=[validate_file_size])
+        upload_to='project_images/', validators=[validate_file_size, validate_file_type])
     caption = models.CharField(max_length=255, blank=True)
 
     def __str__(self):

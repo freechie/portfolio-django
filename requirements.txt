@@ -11,6 +11,7 @@ arrow==1.4.0
 asgiref==3.11.0
     # via
     #   django
+    #   django-axes
     #   django-browser-reload
     #   django-cors-headers
 authlib==1.6.6
@@ -48,6 +49,7 @@ cryptography==46.0.3
 django==6.0
     # via
     #   -r requirements.in
+    #   django-axes
     #   django-browser-reload
     #   django-cors-headers
     #   django-csp
@@ -56,6 +58,8 @@ django==6.0
     #   django-taggit
     #   django-tailwind
     #   djangorestframework
+django-axes==8.1.0
+    # via -r requirements.in
 django-browser-reload==1.21.0
     # via -r requirements.in
 django-cors-headers==4.9.0
@@ -151,6 +155,8 @@ pytailwindcss==0.3.0
     # via django-tailwind
 python-dateutil==2.9.0.post0
     # via arrow
+python-magic==0.4.27
+    # via -r requirements.in
 python-slugify==8.0.4
     # via
     #   -r requirements.in
@@ -201,7 +207,6 @@ typer==0.21.0
     # via safety
 typing-extensions==4.15.0
     # via
-    #   anyio
     #   pydantic
     #   pydantic-core
     #   safety
