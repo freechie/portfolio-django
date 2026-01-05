@@ -28,13 +28,27 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-### 2. Docker Setup
+### 2. Docker Setup (Recommended)
+
+The easiest way to get started is using Docker Compose, which handles all dependencies and environment setup.
+
+
 
 ```bash
+
+# Build and start the container
+
 docker-compose up --build
+
 ```
 
-Access the app at `http://localhost:8000`.
+*   The application will be available at `http://localhost:8000`.
+
+*   Changes to your code will automatically reflect in the container thanks to volume mapping.
+
+*   The setup automatically runs migrations and collects static files on startup.
+
+
 
 ## 🛠️ Tech Stack
 
