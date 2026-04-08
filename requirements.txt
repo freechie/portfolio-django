@@ -131,7 +131,7 @@ pillow==12.1.0
     # via
     #   -r requirements.in
     #   django-simple-captcha
-pip==25.3
+pip
     # via pip-tools
 pip-tools==7.5.2
     # via -r requirements.in
@@ -223,3 +223,4 @@ wheel==0.45.1
     # via pip-tools
 whitenoise==6.11.0
     # via -r requirements.in
+wagtail
