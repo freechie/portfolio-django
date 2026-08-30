@@ -1,6 +1,7 @@
 import os
 import environ
 from pathlib import Path
+from csp.constants import NONCE
 
 # ==============================================================================
 # ENVIRONMENT CONFIGURATION
@@ -193,7 +194,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "en-us"
 # NOTE: It's best practice to use "UTC" for TIME_ZONE to store all data consistently.
 # The server can then convert to the user's local time zone for display.
-TIME_ZONE = "EST"
+TIME_ZONE = "America/New_York"
 USE_I18N = True  # Enable Django's translation system.
 USE_TZ = True  # Makes Django's datetimes timezone-aware.
 
@@ -281,7 +282,12 @@ CSRF_TRUSTED_ORIGINS = [
 WEBPACK_LOADER = {
     "DEFAULT": {
         "BUNDLE_DIR_NAME": "frontend/",
-        "STATS_FILE": os.path.join(BASE_DIR, "frontend/static/frontend/webpack-stats.json")
+        "STATS_FILE": env(
+            "WEBPACK_STATS_FILE",
+            default=os.path.join(
+                BASE_DIR, "frontend/static/frontend/webpack-stats.json"
+            ),
+        ),
     }
 }
 
@@ -296,10 +302,22 @@ CAPTCHA_IMAGE_SIZE = (100, 60)  # Width x Height in pixels
 # Enhances security by specifying which dynamic resources are allowed to load.
 CONTENT_SECURITY_POLICY = {
     "DIRECTIVES": {
-        "style-src": ["'self'"],
-        "script-src": ["'self'"],
+        "default-src": ["'self'"],
+        # Webpack's style-loader and react-slick inject runtime styles.
+        "style-src": ["'self'", "'unsafe-inline'"],
+        "script-src": ["'self'", NONCE],
+        "connect-src": ["'self'"],
+        "font-src": ["'self'", "data:"],
+        "img-src": ["'self'", "data:"],
+        "object-src": ["'none'"],
+        "base-uri": ["'self'"],
+        "form-action": ["'self'"],
+        "frame-ancestors": ["'none'"],
     },
-    "INCLUDE_NONCE_IN": ["script-src", "style-src"],
+    "INCLUDE_NONCE_IN": ["script-src"],
+    # Wagtail and Django admin templates include framework-owned inline scripts.
+    # Keep the strict public policy from breaking authenticated administration.
+    "EXCLUDE_URL_PREFIXES": ["/portal/", "/dashboard/"],
 }
 
 # Enables the browser's built-in XSS protection.

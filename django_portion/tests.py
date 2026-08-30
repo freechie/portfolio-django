@@ -1,6 +1,7 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase, Client
 from django.urls import reverse
-from .models import Project, Skill, Resume
+from .models import Comment, Post, Project, Skill, Resume
 
 class ProjectModelTest(TestCase):
     def setUp(self):
@@ -16,6 +17,35 @@ class ProjectModelTest(TestCase):
     def test_project_defaults(self):
         self.assertEqual(self.project.status, 'in_progress')
         self.assertFalse(self.project.is_featured)
+
+    def test_project_api_uses_the_public_read_only_contract(self):
+        self.project.tags.add("django")
+
+        response = self.client.get("/api/projects/")
+
+        self.assertEqual(response.status_code, 200)
+        project = response.json()[0]
+        self.assertEqual(
+            set(project),
+            {
+                "id",
+                "title",
+                "description",
+                "contribution_role",
+                "created_at",
+                "updated_at",
+                "status",
+                "technologies",
+                "tags",
+                "images",
+                "repo_link",
+                "is_featured",
+                "link",
+                "detail_url",
+            },
+        )
+        self.assertEqual(project["tags"], ["django"])
+        self.assertTrue(project["detail_url"].endswith(f"/projects/{self.project.pk}/"))
 
 
 class SkillModelTest(TestCase):
@@ -43,7 +73,7 @@ class ViewTests(TestCase):
     def test_project_index_view(self):
         response = self.client.get(reverse('project_index'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'django_portion/project_index.html')
+        self.assertTemplateUsed(response, 'frontend/index.html')
 
     def test_skills_index_view(self):
         response = self.client.get(reverse('skills_index'))
@@ -90,3 +120,23 @@ class ViewTests(TestCase):
         self.assertTemplateUsed(response, 'django_portion/tagged_content.html')
         self.assertEqual(len(response.context['display_items']['posts']), 0)
         self.assertEqual(len(response.context['display_items']['projects']), 0)
+
+
+class AdminTests(TestCase):
+    def test_comment_search_uses_real_model_fields(self):
+        user = get_user_model().objects.create_superuser(
+            username="admin",
+            email="admin@example.com",
+            password="test-password",
+        )
+        post = Post.objects.create(title="Post", body="Body")
+        Comment.objects.create(post=post, name="Reader", body="Useful comment")
+        self.client.force_login(user)
+
+        response = self.client.get(
+            reverse('admin:django_portion_comment_changelist'),
+            {'q': 'Useful'},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Useful comment")

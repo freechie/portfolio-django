@@ -4,6 +4,10 @@ from wagtail.models import Page
 from wagtail.admin.panels import FieldPanel
 
 class BlogIndexPage(Page):
+    parent_page_types = ["wagtailcore.Page"]
+    subpage_types = ["blog.BlogPostPage"]
+    max_count = 1
+
     intro = models.TextField(blank=True)
     featured_posts_count = models.IntegerField(default=3)
     
@@ -16,13 +20,24 @@ class BlogIndexPage(Page):
         verbose_name = "Blog Index"
     
     def get_posts(self, limit=None):
-        pass
+        posts = (
+            BlogPostPage.objects.child_of(self)
+            .live()
+            .public()
+            .order_by("-date", "-id")
+        )
+        if limit is not None:
+            return posts[:max(limit, 0)]
+        return posts
     
     def get_featured_posts(self):
-        pass
+        return self.get_posts(limit=self.featured_posts_count)
 
 
 class BlogPostPage(Page):
+    parent_page_types = ["blog.BlogIndexPage"]
+    subpage_types = []
+
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250, blank=True)
     body = models.TextField(blank=True)

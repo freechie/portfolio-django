@@ -18,6 +18,7 @@ class Project {
     repo_link,
     is_featured,
     link,
+    detail_url,
   }) {
     this.id = id;
     this.title = title;
@@ -27,65 +28,72 @@ class Project {
     this.updatedAt = updated_at;
     this.status = status;
     this.technologies = technologies;
-    this.tags = tags;
-    this.images = images;
+    this.tags = tags || [];
+    this.images = images || [];
     this.repoLink = repo_link;
     this.isFeatured = is_featured;
     this.link = link;
+    this.detailUrl = detail_url;
   }
 }
 
 export default function ProjectScroller() {
-  const [projects, setProjects] = useState(new Map());
-  const [theme, setTheme] = useState("light"); // Simulated theme state
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/projects/")
-      .then((response) => response.json())
-      .then((data) => {
-        const newProjects = new Map();
-        data.forEach((projectData) => {
-          const project = new Project(projectData);
-          newProjects.set(project.id, project);
-        });
-        setProjects(newProjects);
+    fetch("/api/projects/")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Project request failed with ${response.status}`);
+        }
+        return response.json();
       })
-      .catch((error) => console.error("Error fetching projects:", error));
+      .then((data) => {
+        setProjects(data.map((projectData) => new Project(projectData)));
+      })
+      .catch(() => setError("Projects could not be loaded. Please try again."))
+      .finally(() => setLoading(false));
   }, []);
 
   function CustomNextArrow(props) {
     const { className, style, onClick } = props;
     return (
-      <div
+      <button
+        type="button"
+        aria-label="Next project"
         className={className}
         style={{
           ...style,
           display: "block",
           right: "1px",
-          background: theme === "dark" ? "#333" : "#18181B",
-          color: theme === "dark" ? "white" : "gray",
+          background: "#18181B",
+          color: "white",
           borderRadius: "30%",
         }}
         onClick={onClick}
-      ></div>
+      />
     );
   }
 
   function CustomPrevArrow(props) {
     const { className, style, onClick } = props;
     return (
-      <div
+      <button
+        type="button"
+        aria-label="Previous project"
         className={className}
         style={{
           ...style,
           display: "block",
           left: "25px",
-          background: theme === "dark" ? "#333" : "#18181B",
-          color: theme === "dark" ? "white" : "gray",
+          background: "#18181B",
+          color: "white",
           borderRadius: "30%",
         }}
         onClick={onClick}
-      ></div>
+      />
     );
   }
 
@@ -93,10 +101,10 @@ export default function ProjectScroller() {
     initialSlide: 0,
     dots: false,
     lazyLoad: true,
-    infinite: true,
+    infinite: projects.length > 1,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     autoplaySpeed: 2000,
     accessibility: true,
     arrows: true,
@@ -110,26 +118,38 @@ export default function ProjectScroller() {
     prevArrow: <CustomPrevArrow />,
   };
 
+  if (loading) {
+    return <p role="status">Loading projects...</p>;
+  }
+
+  if (error) {
+    return <p role="alert">{error}</p>;
+  }
+
+  if (projects.length === 0) {
+    return <p>No projects are available yet.</p>;
+  }
+
   return (
     <div className="slider-container text-center px-4 py-2">
       <Slider {...settings}>
-        {Array.from(projects.values()).map((project) => (
+        {projects.map((project) => (
           <div
             key={project.id}
             className="p-8 rounded-lg shadow-lg mx-4 my-6 bg-gradient-to-t from-transparent to-neutral-100 dark:bg-gradient-to-b dark:from-transparent dark:to-inherit text-slate-700 dark:text-neutral-50 backdrop-filter backdrop-blur-lg"
           >
             <h3 className="text-4xl mb-10 font-semibold font-montserrat">
-              {project.title}
+              <a href={project.detailUrl}>{project.title}</a>
             </h3>
-            <img
-              className="rounded-lg w-full object-cover max-h-96 md:max-h-96 mb-8"
-              src={
-                project.images.length > 0
-                  ? project.images[0].image
-                  : "placeholder-image-url"
-              }
-              alt={project.title || "Project image"}
-            />
+            {project.images.length > 0 ? (
+              <img
+                className="rounded-lg w-full object-cover max-h-96 md:max-h-96 mb-8"
+                src={project.images[0].image}
+                alt={project.images[0].caption || `${project.title} preview`}
+              />
+            ) : (
+              <p className="mb-8">No project preview is available.</p>
+            )}
             <p className="mb-3 text-xl font-sans">{project.description}</p>
             <p className="mb-6 block text-lg font-semibold">
               Role: {project.contributionRole}
@@ -138,7 +158,7 @@ export default function ProjectScroller() {
               {project.tags.map((tag) => (
                 <a
                   key={tag}
-                  href={`/tag/${tag}/`}
+                  href={`/projects/tag/${encodeURIComponent(tag)}/`}
                   className=" bg-gradient-to-r from-indigo-600 to-indigo-900 text-neutral-200 text-md font-semibold px-3 py-1.5 rounded-full"
                 >
                   {tag}

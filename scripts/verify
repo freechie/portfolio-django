@@ -1,0 +1,28 @@
+#!/bin/sh
+set -eu
+
+export SECRET_KEY="${SECRET_KEY:-verification-only-not-for-production}"
+export DEBUG="${DEBUG:-True}"
+
+uv venv .verify-venv --python 3.13 --clear
+uv pip sync --python .verify-venv/bin/python requirements.txt
+
+frontend_workspace="$(mktemp -d "${TMPDIR:-/tmp}/portfolio-frontend-verify.XXXXXX")"
+trap 'rm -rf "$frontend_workspace"' EXIT HUP INT TERM
+
+mkdir -p "$frontend_workspace/frontend"
+cp package.json package-lock.json webpack.config.js .babelrc "$frontend_workspace/"
+cp -R frontend/src "$frontend_workspace/frontend/src"
+
+(
+  cd "$frontend_workspace"
+  npm ci
+  npm run build
+  npm audit --omit=dev
+)
+
+export WEBPACK_STATS_FILE="$frontend_workspace/frontend/static/frontend/webpack-stats.json"
+
+.verify-venv/bin/python manage.py check
+.verify-venv/bin/python manage.py makemigrations --check --dry-run
+.verify-venv/bin/python manage.py test

@@ -84,7 +84,14 @@ ipython_config.py
 
 # Environments
 .env
-.venv
+.venv/
+.verify-venv/
+.playwright-cli/
+bin/
+include/
+lib/
+lib64
+pyvenv.cfg
 env/
 venv/
 ENV/
@@ -113,9 +120,7 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-frontend/static/frontend/webpack-stats.json
-frontend/static/frontend/main-*.js
-frontend/static/frontend/*.js.map
+frontend/static/frontend/*
 
 # UV / Pip-tools (Optional: Keep .txt files in repo, ignore only if you want purely dynamic)
 # requirements*.txt (We usually KEEP these in git)

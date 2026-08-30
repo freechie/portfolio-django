@@ -30,9 +30,6 @@ urlpatterns = [
     # Wagtail documents
     path('documents/', include(wagtaildocs_urls)),
     
-    # Wagtail pages (serves /blog/ and other Wagtail content)
-    path('blog/', include(wagtail_urls)),
-    
     # React Frontend
     path('frontend/', include('frontend.urls')),
     
@@ -57,3 +54,7 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# Wagtail's page router must remain last because it is a catch-all. A
+# BlogIndexPage with the slug "blog" is therefore served at /blog/.
+urlpatterns += [path('', include(wagtail_urls))]

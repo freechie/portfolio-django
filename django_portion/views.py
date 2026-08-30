@@ -17,7 +17,7 @@ from .forms import CommentForm
 from .serializers import ProjectSerializer
 
 class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Project.objects.all()
+    queryset = Project.objects.prefetch_related('images', 'tags').all()
     serializer_class = ProjectSerializer
 
     def get_serializer_context(self):
@@ -34,14 +34,6 @@ def index(request):
         'tags_with_counts': tags_with_counts,
         'projects': projects,
     })
-
-def project_index(request):
-    projects = Project.objects.prefetch_related('images').all()
-    context = {
-        'projects': projects,
-        'nonce': getattr(request, 'nonce', None)
-    }
-    return render(request, 'django_portion/project_index.html', context)
 
 def project_detail(request, pk):
     project = get_object_or_404(Project, pk=pk)

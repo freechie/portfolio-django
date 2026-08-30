@@ -6,23 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}My Portfolio{% endblock %}</title>
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="csp-nonce" content="{{ request.nonce }}" />
+    <meta name="csp-nonce" content="{{ request.csp_nonce }}" />
 
-    {% tailwind_preload_css %} {% tailwind_css %}
+    {% tailwind_css %}
 
     <link
       rel="shortcut icon"
       href="{% static '/django_portion/favicon.ico' %}"
-      nonce="{{ request.nonce }}"
+      nonce="{{ request.csp_nonce }}"
     />
     <link
       rel="stylesheet"
       href="{% static 'django_portion/style.css' %}"
-      nonce="{{ request.nonce }}"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-      nonce="{{ request.nonce }}"
+      nonce="{{ request.csp_nonce }}"
     />
   </head>
 
@@ -37,7 +33,7 @@
           <div class="max-w-5xl mx-auto px-4 flex-shrink-0 mr-4">
             <div class="flex items-center justify-between h-16">
               <a
-                href="{% url 'blog_index' %}"
+                href="/blog/"
                 class="font-bold text-5xl tracking-tight"
                 alt="blog"
                 >🌌</a
@@ -73,7 +69,7 @@
                 >Portfolio</a
               >
               <a
-                href="{% url 'blog_index' %}"
+                href="/blog/"
                 class="block lg:inline-block lg:mt-0 dark:text-platinum-500 hover:text-celestialblue-700"
                 >Blog</a
               >
@@ -136,12 +132,7 @@
     <script
       defer
       src="{% static '/django_portion/base.js' %}"
-      nonce="{{ request.nonce }}"
-    ></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
-      nonce="{{ request.nonce }}"
+      nonce="{{ request.csp_nonce }}"
     ></script>
   </body>
 </html>

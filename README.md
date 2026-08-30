@@ -17,16 +17,27 @@ Ensure you have [uv](https://github.com/astral-sh/uv) installed.
 
 ```bash
 # Clone and enter the repo
-git clone https://github.com/your-username/Developer-Portfolio-Platform.git
-cd Developer-Portfolio-Platform
+git clone https://github.com/freechie/portfolio-django.git
+cd portfolio-django
 
-# Sync environment and run migrations
-uv pip sync requirements.txt requirements-wagtail.txt
-python manage.py migrate
+# Create the pinned Python environment and install dependencies
+uv venv .venv --python 3.13 --clear
+uv pip sync --python .venv/bin/python requirements.txt
+
+# Install and build the React bundle
+npm ci
+npm run build
+
+# Configure the application, then run migrations
+cp -n .env.example .env
+.venv/bin/python manage.py migrate
+.venv/bin/python manage.py ensure_blog
 
 # Start development server
-python manage.py runserver
+.venv/bin/python manage.py runserver
 ```
+
+Run the complete verification suite with `./scripts/verify`.
 
 ### 2. Docker Setup (Recommended)
 
@@ -43,8 +54,6 @@ docker-compose up --build
 ```
 
 *   The application will be available at `http://localhost:8000`.
-
-*   Changes to your code will automatically reflect in the container thanks to volume mapping.
 
 *   The setup automatically runs migrations and collects static files on startup.
 

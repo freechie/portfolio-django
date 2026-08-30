@@ -1,11 +1,9 @@
-from django.shortcuts import render
-from django.utils.crypto import get_random_string
+from django.shortcuts import redirect, render
 
 
 def index(request):
-    # Generate a random nonce value
-    csp_nonce = get_random_string(20)
-    context = {
-        'csp_nonce': csp_nonce,
-    }
-    return render(request, 'frontend/index.html', context)
+    return render(request, 'frontend/index.html')
+
+
+def legacy_index(request):
+    return redirect('project_index', permanent=True)
