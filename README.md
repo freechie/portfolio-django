@@ -1,76 +1,69 @@
-# 🌐 Developer Portfolio & Blog
+# Portfolio
 
-A high-performance, secure personal portfolio and blog platform built with **Django 6.0**, **Wagtail CMS**, and **React**.
+A personal portfolio and publishing application built with Django, Wagtail,
+and React. Django provides the core site and API, Wagtail manages the blog,
+and React powers the project browser.
 
-## ✨ Features
+## Stack
 
-- **Responsive Showcase:** Project portfolio with GitHub integration and image carousels.
-- **Wagtail CMS:** Fully integrated blogging engine for technical content.
-- **Production Hardened:** Pre-configured with CSP (Nonces), Rate Limiting, Brute-force protection, and Deep File Validation.
-- **Modern Tooling:** Powered by `uv` for lightning-fast dependency management and `Docker` for easy deployment.
+- Python 3.13, Django 6.0, and Wagtail 7.2
+- React 18, Tailwind CSS, and Webpack
+- Django REST Framework
+- Docker Compose and uv
 
-## 🚀 Quick Start
+## Local setup
 
-### 1. Local Setup (with `uv`)
-
-Ensure you have [uv](https://github.com/astral-sh/uv) installed.
+Install Python 3.13, [uv](https://docs.astral.sh/uv/), Node.js 24, and npm.
 
 ```bash
-# Clone and enter the repo
 git clone https://github.com/freechie/portfolio-django.git
 cd portfolio-django
 
-# Create the pinned Python environment and install dependencies
+cp -n .env.example .env
+
 uv venv .venv --python 3.13 --clear
 uv pip sync --python .venv/bin/python requirements.txt
 
-# Install and build the React bundle
 npm ci
 npm run build
 
-# Configure the application, then run migrations
-cp -n .env.example .env
+npm --prefix theme/static_src ci
+npm --prefix theme/static_src run build
+
 .venv/bin/python manage.py migrate
 .venv/bin/python manage.py ensure_blog
-
-# Start development server
 .venv/bin/python manage.py runserver
 ```
 
-Run the complete verification suite with `./scripts/verify`.
+The application runs at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
-### 2. Docker Setup (Recommended)
-
-The easiest way to get started is using Docker Compose, which handles all dependencies and environment setup.
-
-
+## Docker
 
 ```bash
-
-# Build and start the container
-
-docker-compose up --build
-
+docker compose up --build
 ```
 
-*   The application will be available at `http://localhost:8000`.
+Docker builds both frontend bundles, applies migrations, creates the Wagtail
+blog index, collects static files, and starts the local development server at
+[http://127.0.0.1:8000](http://127.0.0.1:8000).
 
-*   The setup automatically runs migrations and collects static files on startup.
+## Routes
 
+| Path | Purpose |
+| --- | --- |
+| `/` | Portfolio home page |
+| `/projects/` | React project browser |
+| `/blog/` | Wagtail blog |
+| `/api/projects/` | Project API |
+| `/portal/` | Wagtail administration |
+| `/dashboard/` | Django administration |
 
+## Verification
 
-## 🛠️ Tech Stack
+```bash
+./scripts/verify
+```
 
-- **Backend:** Python 3.13, Django 6.0, Wagtail CMS, Django Rest Framework.
-- **Frontend:** React, Tailwind CSS, DaisyUI, Webpack.
-- **Infrastructure:** Docker, uv, Gunicorn, WhiteNoise.
-- **Security:** django-csp (Nonces), django-axes (Lockout), django-ratelimit, python-magic (MIME validation).
-
-## 🔑 Administration
-
-- **Django Admin:** `/dashboard/`
-- **Wagtail CMS:** `/portal/`
-
----
-
-© 2026 John R. Molina
+The verification script installs dependencies in isolated directories, builds
+the React bundle, checks migration drift, runs Django system checks, and runs
+the test suite.
