@@ -1,8 +1,10 @@
 from datetime import date, timedelta
 from io import StringIO
 
+from django.contrib.auth import get_user_model
 from django.core.management import call_command
 from django.test import TestCase
+from django.urls import reverse
 from wagtail.models import Page
 from wagtail.test.utils import WagtailPageTests
 
@@ -145,3 +147,32 @@ class BlogBootstrapCommandTests(TestCase):
         self.assertContains(self.client.get("/blog/"), "No posts have been published yet.")
         self.assertIn("Created the Wagtail blog index", first_output.getvalue())
         self.assertIn("already exists", second_output.getvalue())
+
+
+class WagtailAdminTests(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_superuser(
+            username="wagtail-admin",
+            email="admin@example.com",
+            password="test-password",
+        )
+        root = Page.objects.get(id=2)
+        self.index_page = BlogIndexPage(
+            title="Blog",
+            intro="Notes about software and data.",
+            slug="blog",
+        )
+        root.add_child(instance=self.index_page)
+        self.client.force_login(self.user)
+
+    def test_admin_home_renders(self):
+        response = self.client.get(reverse("wagtailadmin_home"))
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_blog_index_editor_renders(self):
+        response = self.client.get(
+            reverse("wagtailadmin_pages:edit", args=(self.index_page.id,))
+        )
+
+        self.assertEqual(response.status_code, 200)

@@ -9,7 +9,7 @@
 
 # -- Core Frameworks --
 Django==6.0
-wagtail==7.2.1
+wagtail==8.0
 gunicorn
 djangorestframework
 

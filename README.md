@@ -6,7 +6,7 @@ and React powers the project browser.
 
 ## Stack
 
-- Python 3.13, Django 6.0, and Wagtail 7.2
+- Python 3.13, Django 6.0, and Wagtail 8.0
 - React 18, Tailwind CSS, and Webpack
 - Django REST Framework
 - Docker Compose and uv
