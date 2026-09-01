@@ -66,4 +66,9 @@ blog index, collects static files, and starts the local development server at
 
 The verification script installs dependencies in isolated directories, audits
 and builds both frontend bundles, checks migration drift, runs Django system
-checks, and runs the test suite.
+checks, and runs the test suite. GitHub Actions runs the same command on
+pushes to `main` and on pull requests.
+
+## License
+
+This repository is licensed under the MIT License. See [`LICENSE`](LICENSE).
