@@ -64,6 +64,6 @@ blog index, collects static files, and starts the local development server at
 ./scripts/verify
 ```
 
-The verification script installs dependencies in isolated directories, builds
-the React bundle, checks migration drift, runs Django system checks, and runs
-the test suite.
+The verification script installs dependencies in isolated directories, audits
+and builds both frontend bundles, checks migration drift, runs Django system
+checks, and runs the test suite.

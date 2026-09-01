@@ -10,15 +10,30 @@ uv pip sync --python .verify-venv/bin/python requirements.txt
 frontend_workspace="$(mktemp -d "${TMPDIR:-/tmp}/portfolio-frontend-verify.XXXXXX")"
 trap 'rm -rf "$frontend_workspace"' EXIT HUP INT TERM
 
-mkdir -p "$frontend_workspace/frontend"
+mkdir -p "$frontend_workspace/frontend" \
+  "$frontend_workspace/theme/static_src/src" \
+  "$frontend_workspace/theme/static/css"
 cp package.json package-lock.json webpack.config.js .babelrc "$frontend_workspace/"
 cp -R frontend/src "$frontend_workspace/frontend/src"
+cp theme/static_src/package.json \
+  theme/static_src/package-lock.json \
+  theme/static_src/tailwind.config.js \
+  theme/static_src/postcss.config.js \
+  "$frontend_workspace/theme/static_src/"
+cp theme/static_src/src/styles.css "$frontend_workspace/theme/static_src/src/"
 
 (
   cd "$frontend_workspace"
   npm ci
   npm run build
-  npm audit --omit=dev
+  npm audit --audit-level=high
+)
+
+(
+  cd "$frontend_workspace/theme/static_src"
+  npm ci
+  npm run build
+  npm audit --audit-level=high
 )
 
 export WEBPACK_STATS_FILE="$frontend_workspace/frontend/static/frontend/webpack-stats.json"

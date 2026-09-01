@@ -1,14 +1,14 @@
 #
 # This file lists the direct dependencies of the project.
-# Use pip-compile to generate the requirements.txt lock file.
+# Use uv to generate the requirements.txt lock file.
 #
 # How to use:
-#   pip-compile requirements.in
-#   pip-sync
+#   uv pip compile --upgrade --strip-extras -o requirements.txt requirements.in
+#   uv pip sync --python .venv/bin/python requirements.txt
 #
 
 # -- Core Frameworks --
-Django==6.0
+Django==6.0.8
 wagtail==8.0
 gunicorn
 djangorestframework
@@ -28,19 +28,14 @@ whitenoise  # For serving static files in production
 
 # -- General Python Libraries --
 arrow                   # For better dates and times
-Authlib                 # For authentication tasks
 pillow                  # For image processing
 pymemcache              # For caching
 python-slugify          # For creating URL-friendly slugs
-requests                # For making HTTP requests
 
 # -- Development & Tooling --
 # These are for managing and checking your project.
 # For more advanced setups, you could move these to a
 # separate requirements-dev.in file.
-pip-tools
 bandit                  # Security linter
-safety                  # Checks for vulnerable packages
-cookiecutter            # Project templating
 django-axes
 python-magic
